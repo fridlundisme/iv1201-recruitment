@@ -9,9 +9,10 @@ public class Model {
 
     /**
      * Attempt to login has been made
-     * */
-    public void loginAttempt(String username, String password) {
-        //make this function boolean instead of void later
-        //return statement test to login
+     *
+     * @return*/
+    public boolean loginAttempt(String username, String password) {
+        //return statement test to login, change from the one below.
+        return false;
     }
 }
