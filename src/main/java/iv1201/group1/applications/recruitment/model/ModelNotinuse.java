@@ -8,7 +8,7 @@ import iv1201.group1.applications.recruitment.controller.LoginDetails;
 //make this import correct
 //import iv1201.group1.applications.recruitment.integration.*;
 
-public class Model {
+public class ModelNotinuse {
     //init class in integration layer so it can be used.
 
     /**
