@@ -4,6 +4,11 @@ public class LoginDetails {
     String username;
     String password;
 
+    LoginDetails(String username, String password) {
+        this.password = username;
+        this.password = password;
+    }
+
     public String getUsername() {
         return username;
     }
