@@ -12,8 +12,8 @@ public class LoginController {
     /**
      * Attempt to login has been made
      * */
-    boolean tryLogin(){
-        return model.loginAttempt();
+    boolean tryLogin(LoginDetails loginDetails){
+        return model.loginAttempt(loginDetails);
     }
 }
 

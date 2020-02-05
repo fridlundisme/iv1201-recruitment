@@ -4,6 +4,7 @@
 
 package iv1201.group1.applications.recruitment.model;
 
+import iv1201.group1.applications.recruitment.controller.LoginDetails;
 //make this import correct
 //import iv1201.group1.applications.recruitment.integration.*;
 
@@ -14,7 +15,7 @@ public class Model {
      * Attempt to login has been made
      *
      * @return statement is ...*/
-    public boolean loginAttempt() {
+    public boolean loginAttempt(LoginDetails loginDetails) {
         //return statement test to login, change from the one below.
         return false;
     }
