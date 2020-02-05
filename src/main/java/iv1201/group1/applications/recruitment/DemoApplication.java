@@ -9,7 +9,7 @@ import org.springframework.stereotype.*;
 @SpringBootApplication
 public class DemoApplication {
 
-    @GetMapping("/")
+    @PostMapping("/")
     @ResponseBody
     String home() {
       return "buse";
