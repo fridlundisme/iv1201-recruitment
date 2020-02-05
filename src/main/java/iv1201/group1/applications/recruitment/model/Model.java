@@ -14,7 +14,7 @@ public class Model {
      * Attempt to login has been made
      *
      * @return statement is ...*/
-    public boolean loginAttempt(String username, String password) {
+    public boolean loginAttempt() {
         //return statement test to login, change from the one below.
         return false;
     }
