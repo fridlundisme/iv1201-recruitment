@@ -3,6 +3,7 @@ package iv1201.group1.applications.recruitment.domain;
 import iv1201.group1.applications.recruitment.domain.types.AuthorityType;
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "authority")
 public class Authority {
