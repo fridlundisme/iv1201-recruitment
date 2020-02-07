@@ -26,15 +26,15 @@ public class LoginController {
     public String login() {
         return "testlogin";
     }
-    @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
-    public String postLogin(Model model, HttpSession session) {
-        UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        validatePrinciple(authentication.getPrincipal());
-        User loggedInUser = ((UserDetails) authentication.getPrincipal()).getUserDetails();
-        model.addAttribute("currentUser", loggedInUser.getUsername());
-        session.setAttribute("userId", loggedInUser.getId());
-        return "redirect:/wallPage";
-    }
+    // @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
+    // public String postLogin(Model model, HttpSession session) {
+    //     UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+    //     validatePrinciple(authentication.getPrincipal());
+    //     User loggedInUser = ((UserDetails) authentication.getPrincipal()).getUserDetails();
+    //     model.addAttribute("currentUser", loggedInUser.getUsername());
+    //     session.setAttribute("userId", loggedInUser.getId());
+    //     return "redirect:/wallPage";
+    // }
 
 
     private void validatePrinciple(Object principal) {
