@@ -29,10 +29,10 @@ public class LoginController {
     ModelNotinuse model = new ModelNotinuse();
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, @ModelAttribute Currency db) {
+    public String login(Model model, @ModelAttribute Db db) {
         // model.addAttribute("db", new Db());
         String s = Integration.select();
-        db.setSum(2000);
+        db.setSel("NOT FUCKING NULL");
 
         return "test";
     }
