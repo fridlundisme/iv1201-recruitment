@@ -2,8 +2,7 @@
  * Comments later
  * */
 
-package iv1201.group1.applications.recruitment.controller;
-
+import iv1201.group1.applications.recruitment.domain.Db;
 import iv1201.group1.applications.recruitment.domain.User;
 import iv1201.group1.applications.recruitment.integration.Integration;
 import iv1201.group1.applications.recruitment.model.ModelNotinuse;
