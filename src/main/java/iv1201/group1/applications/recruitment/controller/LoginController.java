@@ -1,8 +1,10 @@
 package iv1201.group1.applications.recruitment.controller;
+
 /**
  * Comments later
  * */
 
+import iv1201.group1.applications.recruitment.domain.Currency;
 import iv1201.group1.applications.recruitment.domain.Db;
 import iv1201.group1.applications.recruitment.domain.User;
 import iv1201.group1.applications.recruitment.integration.Integration;
@@ -27,10 +29,10 @@ public class LoginController {
     ModelNotinuse model = new ModelNotinuse();
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, @ModelAttribute Db db) {
-        model.addAttribute("db", new Db());
+    public String login(Model model, @ModelAttribute Currency db) {
+        // model.addAttribute("db", new Db());
         String s = Integration.select();
-        db.setSel("NOT NULL LOL");
+        db.setSum(2000);
 
         return "test";
     }
