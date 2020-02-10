@@ -14,18 +14,19 @@ public class Integration {
 
         try {
             Connection con = bdbc.getConnection();
-            PreparedStatement pstmt;
-            con.setAutoCommit(false);
-            pstmt = con.prepareStatement("SELECT * FROM webapplication.role");
-            ResultSet rs = pstmt.executeQuery();
-            con.commit();
-            pstmt.close();
-            String s = rs.getString(0) + " " + rs.getString(1);
-            return s;
+            // PreparedStatement pstmt;
+            // con.setAutoCommit(false);
+            // pstmt = con.prepareStatement("SELECT * FROM webapplication.role");
+            // ResultSet rs = pstmt.executeQuery();
+            // con.commit();
+            // pstmt.close();
+            // String s = rs.getString(0) + " " + rs.getString(1);
+            String h = "JJJ";
+            return h;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            return "";
+            return "error";
         }
     }
 }
