@@ -32,7 +32,7 @@ public class LoginController {
     public String login(Model model, @ModelAttribute Db db) {
         // model.addAttribute("db", new Db());
         String s = Integration.select();
-        db.setSel("NOT FUCKING NULL");
+        db.setSel(s);
 
         return "test";
     }
