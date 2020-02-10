@@ -29,7 +29,7 @@ public class LoginController {
     public String login() {
         String s = Integration.select();
 
-        return "s";
+        return "Hehjhh";
     }
     // @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
     // public String postLogin(Model model, HttpSession session) {
