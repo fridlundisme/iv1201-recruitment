@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -26,10 +27,12 @@ public class LoginController {
     ModelNotinuse model = new ModelNotinuse();
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
+    public String login(Model model, @ModelAttribute Db db) {
+        model.addAttribute("db", new Db());
         String s = Integration.select();
+        db.setSel(s);
 
-        return "Hehjhh";
+        return "test";
     }
     // @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
     // public String postLogin(Model model, HttpSession session) {
