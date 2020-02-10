@@ -5,7 +5,10 @@
 package iv1201.group1.applications.recruitment.controller;
 
 import iv1201.group1.applications.recruitment.domain.User;
+import iv1201.group1.applications.recruitment.integration.Integration;
 import iv1201.group1.applications.recruitment.model.ModelNotinuse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +27,9 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "testlogin";
+        String s = Integration.select();
+
+        return "s";
     }
     // @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
     // public String postLogin(Model model, HttpSession session) {

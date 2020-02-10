@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import org.apache.commons.dbcp.BasicDataSource;
 
 public class Integration {
-    public void select() {
+    public static String select() {
         DbConfig db = new DbConfig();
         BasicDataSource bdbc = db.dataSource();
 
@@ -20,12 +20,12 @@ public class Integration {
             ResultSet rs = pstmt.executeQuery();
             con.commit();
             pstmt.close();
-            
-            System.out.println(rs.next());  
-            System.out.println(rs.next());
+            String s = rs.getString(0) + " " + rs.getString(1);
+            return s;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            return "";
         }
     }
 }
