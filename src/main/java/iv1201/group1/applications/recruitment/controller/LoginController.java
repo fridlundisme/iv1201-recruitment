@@ -5,10 +5,9 @@ package iv1201.group1.applications.recruitment.controller;
  * */
 
 import iv1201.group1.applications.recruitment.domain.Currency;
-import iv1201.group1.applications.recruitment.domain.Db;
-import iv1201.group1.applications.recruitment.domain.User;
-import iv1201.group1.applications.recruitment.integration.Integration;
+import iv1201.group1.applications.recruitment.domain.Users;
 import iv1201.group1.applications.recruitment.model.ModelNotinuse;
+import iv1201.group1.applications.recruitment.model.UserJpaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,25 +15,20 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
-@SessionAttributes({"currentUser"})
-@Controller
+@RestController
 public class LoginController {
-    ModelNotinuse model = new ModelNotinuse();
+    @Autowired
+    private UserJpaRepository userjpa;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, @ModelAttribute Db db) {
-        // model.addAttribute("db", new Db());
-        String s = Integration.select();
-        db.setSel(s);
-
-        return "test";
+    @GetMapping(value = "/login")
+    public List<Users> login() {
+        List<Users> usrs =  userjpa.findAll();
+        return usrs;
     }
     // @RequestMapping(value = "/postLogin", method = RequestMethod.POST)
     // public String postLogin(Model model, HttpSession session) {
