@@ -3,9 +3,6 @@ package iv1201.group1.applications.recruitment.domain;
 import javax.validation.constraints.NotEmpty;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "person")
@@ -15,7 +12,6 @@ public class Users implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer person_id;
     @NotEmpty
-    @Column(nullable = false, unique = true)
     private String name;
     private String surname;
     private String ssn;
