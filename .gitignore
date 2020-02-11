@@ -4,6 +4,7 @@ target/
 !**/src/main/**
 !**/src/test/**
 !.travis.yml
+target
 
 ### STS ###
 .apt_generated
