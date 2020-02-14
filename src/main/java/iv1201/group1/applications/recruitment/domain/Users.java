@@ -21,7 +21,6 @@ public class Users implements Serializable {
     private String ssn;
     private String email;
     private String password;
-    @NotEmpty
     private Long role_id;
     private String username;
 
@@ -51,11 +50,11 @@ public class Users implements Serializable {
         this.surname = surname;
     }
 
-    public String getSSN(){
+    public String getSsn(){
         return ssn;
     }
 
-    public void setSSN(String ssn){
+    public void setSsn(String ssn){
         this.ssn = ssn;
     }
 
