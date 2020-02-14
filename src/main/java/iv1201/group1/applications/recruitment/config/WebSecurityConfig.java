@@ -32,37 +32,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    /*@Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return authProvider;
-    }*/
-/*
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
-        auth
-                .jdbcAuthentication()
-                .dataSource(dataSource)
-    }*/
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/resources/**", "/index").permitAll()
+                    .antMatchers("/resources/**", "/index", "/registration")
+                    .permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/login")
-                //.usernameParameter("username")
-                //.passwordParameter("password")
                     .permitAll()
-                //.loginProcessingUrl("/login")
-                //.successForwardUrl("/postLogin")
                     .and()
-                .logout()//.logoutUrl("/doLogout")
+                .logout()
                     .permitAll();
     }
 
@@ -75,21 +57,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
-
-    /*@Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        new LoginController controller = new LoginController();
-        LoginDetails loginDetails = new LoginDetails(.username, .password);
-
-        if (controller.tryLogin(loginDetails)) {
-
-            UserDetails user =
-                    User.withDefaultPasswordEncoder()
-                            .roles("USER")
-                            .build();
-
-            return new InMemoryUserDetailsManager(user);
-        }
-    }*/
 }
