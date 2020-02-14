@@ -15,7 +15,6 @@ public class CompetenceProfile implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     private Long competence_profile_id;
-    @ManyToOne(fetch = FetchType.LAZY)
     private Long person_id;
     @NotEmpty
     private Long competence_id;

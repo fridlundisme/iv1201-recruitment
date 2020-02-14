@@ -16,7 +16,6 @@ public class Role implements Serializable{
     
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @ManyToMany(fetch = FetchType.LAZY)
     private Long id;
     @NotEmpty
     private String name;

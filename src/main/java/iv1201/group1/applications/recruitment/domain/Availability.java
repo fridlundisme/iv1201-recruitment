@@ -1,6 +1,7 @@
 package iv1201.group1.applications.recruitment.domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,9 +25,9 @@ public class Availability implements Serializable {
     private Integer availability_id;
     private Integer person_id;
     @NotEmpty
-    private DateTimeFormat from_date;
+    private LocalDateTime from_date;
     @NotEmpty
-    private DateTimeFormat to_date;
+    private LocalDateTime to_date;
 
     public Integer getAvailability_id(){
         return this.availability_id;
@@ -44,19 +45,19 @@ public class Availability implements Serializable {
         this.person_id = i;
     }
 
-    public DateTimeFormat getFrom_date() {
+    public LocalDateTime getFrom_date() {
         return from_date;
     }
 
-    public void setFrom_date(DateTimeFormat from_date) {
+    public void setFrom_date(LocalDateTime from_date) {
         this.from_date = from_date;
     }
 
-    public DateTimeFormat getTo_date() {
+    public LocalDateTime getTo_date() {
         return to_date;
     }
 
-    public void setTo_date(DateTimeFormat to_date) {
+    public void setTo_date(LocalDateTime to_date) {
         this.to_date = to_date;
     }
 
