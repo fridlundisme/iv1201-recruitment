@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import iv1201.group1.applications.recruitment.domain.Users;
 
 public interface UserJpaRepository extends JpaRepository<Users,Long>{
-    
+    Users findByUsername(String username);
 }

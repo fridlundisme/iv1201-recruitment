@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @Column(columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer person_id;
     @NotEmpty
@@ -17,17 +18,16 @@ public class Users implements Serializable {
     private String ssn;
     private String email;
     private String password;
-    @NotEmpty
     private Long role_id;
     private String username;
 
     public Users() { }
 
-    public Integer getPerson_id() {
+    public Long getPerson_id() {
         return person_id;
     }
 
-    public void setPerson_id(Integer id) {
+    public void setPerson_id(Long id) {
         this.person_id = id;
     }
 
@@ -47,11 +47,11 @@ public class Users implements Serializable {
         this.surname = surname;
     }
 
-    public String getSSN(){
+    public String getSsn(){
         return ssn;
     }
 
-    public void setSSN(String ssn){
+    public void setSsn(String ssn){
         this.ssn = ssn;
     }
 
