@@ -12,10 +12,8 @@ import java.util.Set;
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer person_id;
-    @NotEmpty
-    @Column(nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long person_id;
     private String name;
     private String surname;
     private String ssn;
@@ -26,11 +24,11 @@ public class Users implements Serializable {
 
     public Users() { }
 
-    public Integer getPerson_id() {
+    public Long getPerson_id() {
         return person_id;
     }
 
-    public void setPerson_id(Integer id) {
+    public void setPerson_id(Long id) {
         this.person_id = id;
     }
 
