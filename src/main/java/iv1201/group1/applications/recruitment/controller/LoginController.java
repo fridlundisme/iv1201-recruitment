@@ -4,9 +4,7 @@ package iv1201.group1.applications.recruitment.controller;
  * Comments later
  * */
 
-import iv1201.group1.applications.recruitment.domain.Currency;
 import iv1201.group1.applications.recruitment.domain.Users;
-import iv1201.group1.applications.recruitment.model.ModelNotinuse;
 import iv1201.group1.applications.recruitment.model.UserJpaRepository;
 
 import iv1201.group1.applications.recruitment.service.SecurityService;

@@ -3,17 +3,16 @@ package iv1201.group1.applications.recruitment.domain;
 import javax.validation.constraints.NotEmpty;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "person")
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long person_id;
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer person_id;
+    @NotEmpty
     private String name;
     private String surname;
     private String ssn;
