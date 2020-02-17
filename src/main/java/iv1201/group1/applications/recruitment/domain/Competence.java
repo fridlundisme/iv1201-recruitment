@@ -2,9 +2,7 @@ package iv1201.group1.applications.recruitment.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -13,6 +11,8 @@ public class Competence implements Serializable{
 
     public Competence(){}
     @Id
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long competence_id;
     @NotEmpty
     private String name;

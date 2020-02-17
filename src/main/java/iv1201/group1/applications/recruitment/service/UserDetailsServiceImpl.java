@@ -1,6 +1,6 @@
 package iv1201.group1.applications.recruitment.service;
 
-import iv1201.group1.applications.recruitment.domain.Users;
+import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.model.UserJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
    @Override
    @Transactional(readOnly = true)
    public UserDetails loadUserByUsername(String username) {
-      Users user = userJpaRepository.findByUsername(username);
+      Person user = userJpaRepository.findByUsername(username);
       if (user == null) throw new UsernameNotFoundException(username);
 
       Set<GrantedAuthority> grantedAuthorities = new HashSet<>();

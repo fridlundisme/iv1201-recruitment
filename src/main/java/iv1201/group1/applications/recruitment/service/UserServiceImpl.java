@@ -1,7 +1,6 @@
 package iv1201.group1.applications.recruitment.service;
 
-import iv1201.group1.applications.recruitment.domain.Users;
-import iv1201.group1.applications.recruitment.model.RoleJparepository;
+import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.model.UserJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,13 +15,13 @@ public class UserServiceImpl implements UserService {
    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
    @Override
-   public void save(Users users) {
-      users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
-      userJpaRepository.save(users);
+   public void save(Person person) {
+      person.setPassword(bCryptPasswordEncoder.encode(person.getPassword()));
+      userJpaRepository.save(person);
    }
 
    @Override
-   public Users findByUsername(String username) {
+   public Person findByUsername(String username) {
       return userJpaRepository.findByUsername(username);
    }
 }

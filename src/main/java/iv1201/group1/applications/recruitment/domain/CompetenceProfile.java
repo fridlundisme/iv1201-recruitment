@@ -14,7 +14,10 @@ public class CompetenceProfile implements Serializable{
      */
     private static final long serialVersionUID = 1L;
     @Id
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long competence_profile_id;
+    @NotEmpty
     private Long person_id;
     @NotEmpty
     private Long competence_id;

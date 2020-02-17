@@ -3,11 +3,7 @@ package iv1201.group1.applications.recruitment.domain;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,7 +18,10 @@ public class Availability implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer availability_id;
+    @NotEmpty
     private Integer person_id;
     @NotEmpty
     private LocalDateTime from_date;

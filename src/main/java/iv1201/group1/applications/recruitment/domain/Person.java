@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "person")
-public class Users implements Serializable {
+public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Column(columnDefinition = "serial")
@@ -14,14 +14,20 @@ public class Users implements Serializable {
     private Long person_id;
     @NotEmpty
     private String name;
+    @NotEmpty
     private String surname;
+    @NotEmpty
     private String ssn;
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private Long role_id;
+    @NotEmpty
     private String username;
 
-    public Users() { }
+    public Person() { }
 
     public Long getPerson_id() {
         return person_id;

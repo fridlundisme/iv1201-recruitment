@@ -1,12 +1,5 @@
 package iv1201.group1.applications.recruitment.auth;
 
-import iv1201.group1.applications.recruitment.domain.Users;
-import iv1201.group1.applications.recruitment.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
 /*
 @Component
 public class UserValidator implements Validator {
