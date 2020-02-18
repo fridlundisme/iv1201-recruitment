@@ -1,8 +1,8 @@
 package iv1201.group1.applications.recruitment.service;
 
-import iv1201.group1.applications.recruitment.domain.Users;
-import iv1201.group1.applications.recruitment.model.RoleJparepository;
-import iv1201.group1.applications.recruitment.model.UserJpaRepository;
+import iv1201.group1.applications.recruitment.domain.Person;
+import iv1201.group1.applications.recruitment.model.RoleJpaRepository;
+import iv1201.group1.applications.recruitment.model.PersonJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,19 +10,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
    @Autowired
-   private UserJpaRepository userJpaRepository;
+   private PersonJpaRepository personJpaRepository;
+
+   @Autowired
+   private RoleJpaRepository roleJpaRepository;
 
    @Autowired
    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
    @Override
-   public void save(Users users) {
-      users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
-      userJpaRepository.save(users);
+   public void save(Person person) {
+      person.setRole(roleJpaRepository.findByName("admin"));
+      person.setPassword(bCryptPasswordEncoder.encode(person.getPassword()));
+      personJpaRepository.save(person);
    }
 
    @Override
-   public Users findByUsername(String username) {
-      return userJpaRepository.findByUsername(username);
+   public Person findByUsername(String username) {
+      return personJpaRepository.findByUsername(username);
    }
 }

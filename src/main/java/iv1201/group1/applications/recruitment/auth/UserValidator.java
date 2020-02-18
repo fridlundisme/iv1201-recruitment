@@ -1,6 +1,6 @@
 package iv1201.group1.applications.recruitment.auth;
 
-import iv1201.group1.applications.recruitment.domain.Users;
+import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
