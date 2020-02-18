@@ -2,6 +2,7 @@ package iv1201.group1.applications.recruitment.domain;
 
 import javax.validation.constraints.NotEmpty;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -22,8 +23,10 @@ public class Person implements Serializable {
     private String email;
     @NotEmpty
     private String password;
-    @NotEmpty
-    private Long role_id;
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Role.class)
+    @JoinColumn(name = "role_id", insertable = false, updatable = false)
+    private Role role;
     @NotEmpty
     private String username;
 
@@ -77,12 +80,12 @@ public class Person implements Serializable {
         this.password = password;
     }
 
-    public Long getRole_id(){
-        return this.role_id;
+    public Role getRole(){
+        return this.role;
     }
 
-    public void setRole_id(long role_id){
-        this.role_id = role_id;
+    public void setRole(Role r){
+        this.role = r;
     }
 
     public String getUsername() {

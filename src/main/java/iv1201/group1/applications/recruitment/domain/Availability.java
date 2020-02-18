@@ -2,11 +2,10 @@ package iv1201.group1.applications.recruitment.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "availability")
@@ -20,28 +19,28 @@ public class Availability implements Serializable {
     @Id
     @Column(columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer availability_id;
+    private Long availability_id;
     @NotEmpty
-    private Integer person_id;
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Person.class)
+    @JoinColumn(name = "person_id", insertable = false, updatable = false)
+    private List<Person> persons;
     @NotEmpty
     private LocalDateTime from_date;
     @NotEmpty
     private LocalDateTime to_date;
 
-    public Integer getAvailability_id(){
+    public Long getAvailability_id(){
         return this.availability_id;
     }
 
-    public void setAvailability_id(Integer i){
-        this.availability_id = i;
+    public void setAvailability_id(Long i) { this.availability_id = i; }
+
+    public List getPersons(){
+        return this.persons;
     }
 
-    public Integer getPerson_id(){
-        return this.person_id;
-    }
-
-    public void setPerson_id(Integer i){
-        this.person_id = i;
+    public void setPersons(List<Person> plist){
+        this.persons = plist;
     }
 
     public LocalDateTime getFrom_date() {

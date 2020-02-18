@@ -1,6 +1,9 @@
 package iv1201.group1.applications.recruitment.domain;
 
+import org.springframework.stereotype.Controller;
+
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -18,9 +21,13 @@ public class CompetenceProfile implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long competence_profile_id;
     @NotEmpty
-    private Long person_id;
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Person.class)
+    @JoinColumn(name = "person_id", insertable = false, updatable = false)
+    private List<Person> persons;
     @NotEmpty
-    private Long competence_id;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Competence.class)
+    @JoinColumn(name = "competence_id", insertable = false, updatable = false)
+    private Competence competence;
     @NotEmpty
     private Float years_of_experience;
 
@@ -32,20 +39,20 @@ public class CompetenceProfile implements Serializable{
         this.competence_profile_id = competence_profile_id;
     }
 
-    public Long getPerson_id() {
-        return person_id;
+    public List<Person> getPersons() {
+        return persons;
     }
 
-    public void setPerson_id(Long person_id) {
-        this.person_id = person_id;
+    public void setPersons(List<Person> plist) {
+        this.persons = plist;
     }
 
-    public Long getCompetence_id() {
-        return competence_id;
+    public Competence getCompetence() {
+        return competence;
     }
 
-    public void setCompetence_id(Long competence_id) {
-        this.competence_id = competence_id;
+    public void setCompetence(Competence comp) {
+        this.competence = comp;
     }
 
     public Float getYears_of_experience() {
