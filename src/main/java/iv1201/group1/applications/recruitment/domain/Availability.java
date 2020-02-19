@@ -1,15 +1,11 @@
 package iv1201.group1.applications.recruitment.domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "availability")
@@ -21,42 +17,45 @@ public class Availability implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private Integer availability_id;
-    private Integer person_id;
+    @Column(columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long availability_id;
     @NotEmpty
-    private DateTimeFormat from_date;
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Person.class)
+    @JoinColumn(name = "person_id", insertable = false, updatable = false)
+    private List<Person> persons;
     @NotEmpty
-    private DateTimeFormat to_date;
+    private LocalDateTime from_date;
+    @NotEmpty
+    private LocalDateTime to_date;
 
-    public Integer getAvailability_id(){
+    public Long getAvailability_id(){
         return this.availability_id;
     }
 
-    public void setAvailability_id(Integer i){
-        this.availability_id = i;
+    public void setAvailability_id(Long i) { this.availability_id = i; }
+
+    public List getPersons(){
+        return this.persons;
     }
 
-    public Integer getPerson_id(){
-        return this.person_id;
+    public void setPersons(List<Person> plist){
+        this.persons = plist;
     }
 
-    public void setPerson_id(Integer i){
-        this.person_id = i;
-    }
-
-    public DateTimeFormat getFrom_date() {
+    public LocalDateTime getFrom_date() {
         return from_date;
     }
 
-    public void setFrom_date(DateTimeFormat from_date) {
+    public void setFrom_date(LocalDateTime from_date) {
         this.from_date = from_date;
     }
 
-    public DateTimeFormat getTo_date() {
+    public LocalDateTime getTo_date() {
         return to_date;
     }
 
-    public void setTo_date(DateTimeFormat to_date) {
+    public void setTo_date(LocalDateTime to_date) {
         this.to_date = to_date;
     }
 

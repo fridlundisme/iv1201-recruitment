@@ -9,31 +9,26 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "role")
 public class Role implements Serializable{
-    /**
-	 *
-	 */
-    private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
     
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Long id;
-    @NotEmpty
-    private String name;
+   @Column(columnDefinition = "serial")
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long role_id;
+	@NotEmpty
+   private String name;
 
-    public Long getId() {
-        return id;
-    }
+   public Role() { }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getRole_id() {
+	   return role_id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setRole_id(Long id) {
+	   this.role_id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() { return name; }
+
+	public void setName(String name) { this.name = name; }
 }

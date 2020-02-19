@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS availability;
+DROP TABLE IF EXISTS competence;
+DROP TABLE IF EXISTS competence_profile;
+
 DROP TABLE IF EXISTS webapplication.role CASCADE;
 DROP TABLE IF EXISTS webapplication.person CASCADE;
 DROP TABLE IF EXISTS webapplication.availability CASCADE;
@@ -16,13 +22,13 @@ CREATE TABLE webapplication.person (
     ssn VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role_id BIGINT REFERENCES webapplication.role(role_id) ON DELETE CASCADE,
+    role_id BIGINT REFERENCES webapplication.role (role_id) ON DELETE CASCADE,
     username VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE webapplication.availability (
     availability_id SERIAL PRIMARY KEY,
-    person_id BIGINT REFERENCES webapplication.person(person_id) ON DELETE CASCADE,
+    person_id BIGINT REFERENCES webapplication.person (person_id) ON DELETE CASCADE,
     from_date DATE NOT NULL,
     to_date DATE NOT NULL
 );
@@ -34,7 +40,7 @@ CREATE TABLE webapplication.competence (
 
 CREATE TABLE webapplication.competence_profile (
     competence_profile_id SERIAL PRIMARY KEY,
-    person_id BIGINT REFERENCES webapplication.person(person_id) ON DELETE CASCADE,
-    competence_id BIGINT REFERENCES webapplication.competence(competence_id) ON DELETE CASCADE,
+    person_id BIGINT REFERENCES webapplication.person (person_id) ON DELETE CASCADE,
+    competence_id BIGINT REFERENCES webapplication.competence (competence_id) ON DELETE CASCADE,
     years_of_experience NUMERIC(4,2) NOT NULL
 );
