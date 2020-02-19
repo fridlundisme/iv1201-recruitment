@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import iv1201.group1.applications.recruitment.domain.Users;
+import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.service.SecurityService;
 import iv1201.group1.applications.recruitment.service.UserService;
 
@@ -22,7 +22,7 @@ public class RegistrationController {
     private SecurityService securityService;
 
     @PostMapping("/registration")
-    public ModelAndView registration(@ModelAttribute("registrationForm") @Valid Users users, BindingResult bindingResult) {
+    public ModelAndView registration(@ModelAttribute("registrationForm") @Valid Person users, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()){
             return new ModelAndView("registration","registrationForm",users);

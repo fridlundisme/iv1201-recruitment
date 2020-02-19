@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import iv1201.group1.applications.recruitment.domain.Users;
+import iv1201.group1.applications.recruitment.domain.Person;
 
 @Controller
 public class MainController{
@@ -16,7 +16,7 @@ public class MainController{
 
     @GetMapping("/registration")
     public String showRegistrationForm(Model model){
-        model.addAttribute("registrationForm", new Users());
+        model.addAttribute("registrationForm", new Person());
         return "registration";
     }
 }
