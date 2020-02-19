@@ -45,19 +45,19 @@
                         <label class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
                         <input type="text" class="form-control" id="inputEmail" placeholder="Email" th:field="*{email}">
                     </div>
-                    <div class="form-group col-md-6">
+                    <!-- <div class="form-group col-md-6">
                         <label for="inputEmail">Confirm email</label>
                         <input type="text" class="form-control" id="inputEmail" placeholder="Email" th:field="*{retypeEmail}">
                         <label class="error" th:if="${#fields.hasErrors('retypeEmail')}" th:errors="*{retypeEmail}"></label>
-                    </div>
+                    </div> -->
                     <div class="form-group col-md-6">
                         <label for="inputPassword">Password</label>
                         <input type="password" class="form-control" id="inputPassword" placeholder="Password" th:field="*{password}">
                     </div>
-                    <div class="form-group col-md-6">
+                    <!-- <div class="form-group col-md-6">
                         <label for="inputPassword">Confirm password</label>
                         <input type="password" class="form-control" id="inputPassword" placeholder="Password" th:field="*{matchingPassword}">
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md">

@@ -15,8 +15,9 @@ public class MainController{
     }
 
     @GetMapping("/registration")
-    public String showRegistrationForm(Model model){
+    public String registration(Model model) {
         model.addAttribute("registrationForm", new Person());
         return "registration";
+
     }
 }

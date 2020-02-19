@@ -27,28 +27,6 @@ public class LoginController {
         return "testlogin";
     }
 
-    @GetMapping("/registration")
-    public String registration(Model model) {
-        model.addAttribute("registrationForm", new Person());
-        return "registration";
-
-    }
-
-    @PostMapping("/registration")
-    public String registration(@ModelAttribute("registrationForm") Person registrationForm, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors())
-            return "registration";
-
-        System.out.println(registrationForm.toString());
-
-        userService.save(registrationForm);
-
-        securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
-
-        return "index";
-    }
-
     @GetMapping("/index")
     public String index(Model model) {
         return "index";

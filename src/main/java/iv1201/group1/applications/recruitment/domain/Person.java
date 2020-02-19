@@ -1,17 +1,26 @@
 package iv1201.group1.applications.recruitment.domain;
 
 import javax.persistence.*;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.Objects;
 
 @Entity
-@Table(name = "person", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+@Table(name = "person", schema = "webapplication")
 public class Person {
    private Integer personId;
+   @NotBlank(message="Name is required")
    private String name;
+   @NotBlank(message="Surname is required")
    private String surname;
+   @NotBlank(message="Social security number is required")
    private String ssn;
+   @NotBlank(message="Email is required")
    private String email;
+   @NotBlank(message="Password is required")
    private String password;
+   @NotBlank(message="Username is required")
    private String username;
    private Role role;
 
