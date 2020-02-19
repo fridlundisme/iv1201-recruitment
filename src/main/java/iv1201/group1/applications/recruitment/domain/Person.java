@@ -25,7 +25,7 @@ public class Person implements Serializable {
     private String password;
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Role.class)
-    @JoinColumn(name = "role_id", insertable = false, updatable = false)
+    @JoinColumn(name = "name", insertable = false, updatable = false)
     private Role role;
     @NotEmpty
     private String username;
