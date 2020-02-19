@@ -1,57 +1,68 @@
 package iv1201.group1.applications.recruitment.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
 @Entity
-@Table(name = "competence_profile")
-public class CompetenceProfile implements Serializable{
+@Table(name = "competence_profile", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+public class CompetenceProfile {
+   private Integer competenceProfileId;
+   private Integer yearsOfExperience;
+   private Person person;
+   private Competence competence;
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    @Id
-    private Long competence_profile_id;
-    private Long person_id;
-    @NotEmpty
-    private Long competence_id;
-    @NotEmpty
-    private Float years_of_experience;
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Column(name = "competence_profile_id", nullable = false)
+   public Integer getCompetenceProfileId() {
+      return competenceProfileId;
+   }
 
-    public Long getCompetence_profile_id() {
-        return competence_profile_id;
-    }
+   public void setCompetenceProfileId(Integer competenceProfileId) {
+      this.competenceProfileId = competenceProfileId;
+   }
 
-    public void setCompetence_profile_id(Long competence_profile_id) {
-        this.competence_profile_id = competence_profile_id;
-    }
+   @Basic
+   @Column(name = "years_of_experience", nullable = false)
+   public Integer getYearsOfExperience() {
+      return yearsOfExperience;
+   }
 
-    public Long getPerson_id() {
-        return person_id;
-    }
+   public void setYearsOfExperience(Integer yearsOfExperience) {
+      this.yearsOfExperience = yearsOfExperience;
+   }
 
-    public void setPerson_id(Long person_id) {
-        this.person_id = person_id;
-    }
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CompetenceProfile that = (CompetenceProfile) o;
+      return Objects.equals(competenceProfileId, that.competenceProfileId) &&
+              Objects.equals(yearsOfExperience, that.yearsOfExperience);
+   }
 
-    public Long getCompetence_id() {
-        return competence_id;
-    }
+   @Override
+   public int hashCode() {
+      return Objects.hash(competenceProfileId, yearsOfExperience);
+   }
 
-    public void setCompetence_id(Long competence_id) {
-        this.competence_id = competence_id;
-    }
+   @ManyToOne
+   @JoinColumn(name = "person_id", referencedColumnName = "person_id", nullable = false)
+   public Person getPerson() {
+      return person;
+   }
 
-    public Float getYears_of_experience() {
-        return years_of_experience;
-    }
+   public void setPerson(Person personByPersonId) {
+      this.person = personByPersonId;
+   }
 
-    public void setYears_of_experience(Float years_of_experience) {
-        this.years_of_experience = years_of_experience;
-    }
+   @ManyToOne
+   @JoinColumn(name = "competence_id", referencedColumnName = "competence_id", nullable = false)
+   public Competence getCompetence() {
+      return competence;
+   }
 
-
+   public void setCompetence(Competence competenceByCompetenceId) {
+      this.competence = competenceByCompetenceId;
+   }
 }

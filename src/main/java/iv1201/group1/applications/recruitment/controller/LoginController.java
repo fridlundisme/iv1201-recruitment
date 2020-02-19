@@ -4,22 +4,15 @@ package iv1201.group1.applications.recruitment.controller;
  * Comments later
  * */
 
-import iv1201.group1.applications.recruitment.domain.Users;
-import iv1201.group1.applications.recruitment.model.UserJpaRepository;
+import iv1201.group1.applications.recruitment.domain.Person;
 
 import iv1201.group1.applications.recruitment.service.SecurityService;
 import iv1201.group1.applications.recruitment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -36,13 +29,13 @@ public class LoginController {
 
     @GetMapping("/registration")
     public String registration(Model model) {
-        model.addAttribute("registrationForm", new Users());
+        model.addAttribute("registrationForm", new Person());
         return "registration";
 
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("registrationForm") Users registrationForm, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("registrationForm") Person registrationForm, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors())
             return "registration";

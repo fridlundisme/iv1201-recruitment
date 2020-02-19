@@ -1,38 +1,57 @@
 package iv1201.group1.applications.recruitment.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-
+import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name = "role")
-public class Role implements Serializable{
-    /**
-	 *
-	 */
-    private static final long serialVersionUID = 1L;
-    
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @NotEmpty
-    private String name;
+@Table(name = "role", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+public class Role {
+   private Integer roleId;
+   private String name;
+   private List<Person> peopleList;
 
-    public Long getId() {
-        return id;
-    }
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Column(name = "role_id", nullable = false)
+   public Integer getRoleId() {
+      return roleId;
+   }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+   public void setRoleId(Integer roleId) {
+      this.roleId = roleId;
+   }
 
-    public String getName() {
-        return name;
-    }
+   @Basic
+   @Column(name = "name", nullable = false, length = -1)
+   public String getName() {
+      return name;
+   }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Role that = (Role) o;
+      return Objects.equals(roleId, that.roleId) &&
+              Objects.equals(name, that.name);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(roleId, name);
+   }
+
+   @OneToMany(mappedBy = "role")
+   public List<Person> getPeopleList() {
+      return peopleList;
+   }
+
+   public void setPeopleList(List<Person> peopleByRoleId) {
+      this.peopleList = peopleByRoleId;
+   }
 }
