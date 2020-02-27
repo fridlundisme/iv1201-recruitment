@@ -25,7 +25,8 @@ public class Person {
    private Role role;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_person_id_seq_generator")
+   @SequenceGenerator(name = "person_person_id_seq_generator", sequenceName = "person_person_id_seq", allocationSize = 1, initialValue = 4)
    @Column(name = "person_id", nullable = false)
    public Integer getPersonId() {
       return personId;

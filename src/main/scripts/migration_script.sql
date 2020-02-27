@@ -149,4 +149,7 @@ alter table "public"."competence_profile" add constraint "competence_profile_per
 
 alter table "public"."person" add constraint "person___fk" FOREIGN KEY (role_id) REFERENCES role(role_id) ON UPDATE CASCADE;
 
+update person SET password = crypt(password, gen_salt('bf'));
+
+
 

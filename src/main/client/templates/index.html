@@ -4,18 +4,18 @@
 
 
     <head>
-        <th:block th:replace="/layout/partials/head.html"></th:block>
+        <th:block th:replace="layout/partials/head.html"></th:block>
     </head>
 
     <body>
-        <th:block th:replace="/layout/partials/navbar.html"></th:block>
+        <th:block th:replace="layout/partials/navbar.html"></th:block>
 
         <h1 th:inline="text" th:text="*{#authentication.getName()}"></h1>
         <h1 th:inline="text">You are on user page</h1>
         <a th:href="@{/register}">Register</a>
         <a th:if="${isRecruit}" th:href="@{/recruit}">Recruit</a>
 
-        <th:block th:replace="/layout/partials/footer.html"></th:block>
+        <th:block th:replace="layout/partials/footer.html"></th:block>
     </body>
 </html>
 
