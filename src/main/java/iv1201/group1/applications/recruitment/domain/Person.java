@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
-@Table(name = "person", schema = "webapplication")
+@Table(name = "person")
 public class Person {
    private Integer personId;
    @NotBlank(message="Name is required")

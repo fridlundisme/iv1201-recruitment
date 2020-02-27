@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "availability", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+@Table(name = "availability")
 public class Availability {
    private Integer availabilityId;
    private Date fromDate;

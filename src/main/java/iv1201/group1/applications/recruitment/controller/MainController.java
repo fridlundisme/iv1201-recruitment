@@ -35,9 +35,6 @@ public class MainController{
 
     }
 
-    @GetMapping("/recruit")
-    public String recruit() {return "recruit"; }
-
     @GetMapping("/apply")
     public String apply() {return "apply"; }
 }
