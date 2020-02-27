@@ -26,8 +26,6 @@ public class RegistrationController {
         if (bindingResult.hasErrors())
             return "registration";
 
-        System.out.println(registrationForm.toString());
-
         userService.save(registrationForm);
 
         securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
