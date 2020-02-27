@@ -25,3 +25,9 @@ ul a:hover {
     background-color: #ddd;
     color: black;
 }
+
+#divNav {
+    left: 0; 
+    top: 0; 
+    width: 100%;
+}
