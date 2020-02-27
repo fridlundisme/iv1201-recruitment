@@ -8,7 +8,7 @@
 <h1 th:inline="text" th:text="*{#authentication.getName()}"></h1>
 <h1 th:inline="text">You are on user page</h1>
 <a th:href="@{/register}">Register</a>
-<a th:if="${isadmin}" th:href="@{/recruit}">Recruit</a>
+<a th:if="${isRecruit}" th:href="@{/recruit}">Recruit</a>
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
