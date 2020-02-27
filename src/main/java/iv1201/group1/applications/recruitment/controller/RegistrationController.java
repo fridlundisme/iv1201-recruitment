@@ -21,22 +21,19 @@ public class RegistrationController {
     @Autowired
     private SecurityService securityService;
 
+
     @PostMapping("/registration")
-    public ModelAndView registration(@ModelAttribute("registrationForm") @Valid Person users, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("registrationForm") @Valid Person registrationForm, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
-            return new ModelAndView("registration","registrationForm",users);
-        }
+        if (bindingResult.hasErrors())
+            return "registration";
 
-        return new ModelAndView("index");
-        // if (bindingResult.hasErrors())
-        //     return "registration";
+        System.out.println(registrationForm.toString());
 
-        // System.out.println(users.toString());
+        userService.save(registrationForm);
 
-        // userService.save(users);
+        securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
 
-        // securityService.autoLogin(users.getUsername(), users.getPassword());
-
+        return "index";
     }
 }
