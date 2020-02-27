@@ -7,15 +7,10 @@ import org.springframework.stereotype.*;
 
 @Controller
 @SpringBootApplication
-public class DemoApplication {
+public class Main {
 
-    @PostMapping("/")
-    @ResponseBody
-    String home() {
-      return "buse";
-    }
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(Main.class, args);
     }
 }
