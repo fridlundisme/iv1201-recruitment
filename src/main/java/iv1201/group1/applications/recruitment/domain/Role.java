@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "role", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+@Table(name = "role")
 public class Role {
    private Integer roleId;
    private String name;
