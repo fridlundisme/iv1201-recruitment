@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Application - additional information</title>
+    <th:block th:replace="/layout/partials/head.html"></th:block>
+</head>
+<body>
+    <th:block th:replace="/layout/partials/navbar.html"></th:block>
+
+    <h1>Application - Additional information</h1>
+
+
+    <div class="selectSkill">
+        Skills:
+        <div class="custom-select">
+            <select>
+                <option value="0">Add a skill..</option>
+                <option value="1">Computer knowledge</option>
+                <option value="2">Cooking skills</option>
+                <option value="3">Clean stuff</option>
+            </select>
+        </div>
+
+        Level:
+        <div class="custom-select">
+            <select>
+                <option value="0">Specify how good you are</option>
+                <option value="1">Beginner</option>
+                <option value="2">Average</option>
+                <option value="3">Pro</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function addSelectSkill() {
+            document.querySelector('.selectSkill').parentElement.insertBefore(document.querySelector('.selectSkill').cloneNode(true), document.querySelector('.selectSkill'));
+        }
+    </script>
+    <p> </p>
+
+    Add more skills:
+    <button onclick="addSelectSkill()">+</button>
+
+    <p> </p>
+
+    <div class="selectTime">
+        Select the time periods that you are available to work:
+        <div class="custom-select">
+            <select>
+                <option value="0">Choose a period</option>
+                <option value="1">april</option>
+                <option value="2">may</option>
+                <option value="3">june</option>
+                <option value="4">july</option>
+            </select>
+        </div>
+
+        Level:
+        <div class="custom-select">
+            <select>
+                <option value="0">Specify how available you are</option>
+                <option value="1">Full time</option>
+                <option value="2">only weekends</option>
+                <option value="3">no weekends</option>
+                <option value="4">1-2 days/week</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        function addSelectTime() {
+            document.querySelector('.selectTime').parentElement.insertBefore(document.querySelector('.selectTime').cloneNode(true), document.querySelector('.selectTime'));
+        }
+    </script>
+
+    <p></p>
+    Add more availability
+    <button onclick="addSelectTime()">+</button>
+    <p> </p>
+    <div>
+        <button>Go back to registration</button>
+        <button>View application before submitting</button>
+    </div>
+
+    <th:block th:replace="/layout/partials/footer.html"></th:block>
+</body>
+</html>

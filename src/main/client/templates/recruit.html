@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Recruit site</title>
+    <th:block th:replace="/layout/partials/head.html"></th:block>
+</head>
+<body>
+    <th:block th:replace="/layout/partials/navbar.html"></th:block>
+
+    <h1>Applications</h1>
+
+    Sort by:
+    <div class="custom-select" style="width: 200px;">
+        <select>
+            <option value="0">Do not sort</option>
+            <option value="1">Number of abilities</option>
+            <option value="2">Name</option>
+            <option value="3">Age</option>
+        </select>
+    </div>
+
+    <p> </p>
+
+    Show only applicants that:
+    <div class="custom-select" style="width: 200px;">
+        <select>
+            <option value="0">Show all</option>
+            <option value="1">available in june</option>
+            <option value="2">has a driver licence</option>
+            <option value="3">can cook</option>
+        </select>
+    </div>
+
+    <p> </p>
+    <div>
+        <button>Show result</button>
+    </div>
+
+
+    <!-- down here will de applications show, placeholder in mean time -->
+    <div style="float: left;">
+        <ul>
+            <a href="#">Worst Worsington</a></br>
+            <a href="#">Legendary Boss</a></br>
+            <a href="#">Gabe</a>
+        </ul>
+    </div>
+
+    <th:block th:replace="/layout/partials/footer.html"></th:block>
+
+</body>
+</html>
