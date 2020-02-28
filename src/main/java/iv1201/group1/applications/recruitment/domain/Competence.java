@@ -5,14 +5,15 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "competence", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+@Table(name = "competence")
 public class Competence {
    private Integer competenceId;
    private String name;
    private Collection<CompetenceProfile> competenceProfileList;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "competence_competence_id_seq_generator")
+   @SequenceGenerator(name = "competence_competence_id_seq_generator", sequenceName = "competence_competence_id_seq", allocationSize = 1, initialValue = 4)
    @Column(name = "competence_id", nullable = false)
    public Integer getCompetenceId() {
       return competenceId;

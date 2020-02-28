@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "competence_profile", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+@Table(name = "competence_profile")
 public class CompetenceProfile {
    private Integer competenceProfileId;
    private Integer yearsOfExperience;
@@ -12,7 +12,8 @@ public class CompetenceProfile {
    private Competence competence;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "competence_profile_competence_profile_id_seq_generator")
+   @SequenceGenerator(name = "competence_profile_competence_profile_id_seq_generator", sequenceName = "competence_profile_competence_profile_id_seq", allocationSize = 1, initialValue = 4)
    @Column(name = "competence_profile_id", nullable = false)
    public Integer getCompetenceProfileId() {
       return competenceProfileId;
