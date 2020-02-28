@@ -77,10 +77,10 @@
     Add more availability
     <button onclick="addSelectTime()">+</button>
     <p> </p>
-    <div>
-        <button th:href="@{/registration}">Go back to registration</button>
-        <button>View application before submitting</button>
-    </div>
+    <form>
+        <button type="submit" th:href="@{/registration}">Go back to registration</button>
+        <button type="submit" th:href="@{/review}">View application before submitting</button>
+    </form>
 
     <th:block th:replace="/layout/partials/footer.html"></th:block>
 </body>

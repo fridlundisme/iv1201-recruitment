@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <th:block th:replace="/layout/partials/head.html"></th:block>
+</head>
+<body onload="reviewApplication()">
+    <th:block th:replace="/layout/partials/navbar.html"></th:block>
+
+    <script>
+        function reviewApplication(){
+            //donnu what to put here
+        }
+    </script>
+
+    <form th:action="@{/submitApplication}" method="post">
+        <button type="submit" th:href="@{/apply}">back</button>
+        <button type="submit" value="Submit"/>
+    </form>
+
+    <th:block th:replace="/layout/partials/footer.html"></th:block>
+</body>
+</html>

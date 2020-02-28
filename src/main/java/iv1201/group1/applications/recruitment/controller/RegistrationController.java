@@ -30,10 +30,10 @@ public class RegistrationController {
 
         System.out.println(registrationForm.toString());
 
-        userService.save(registrationForm);
+        //userService.save(registrationForm);
 
-        securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
+        //securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
 
-        return "index";
+        return "apply";
     }
 }

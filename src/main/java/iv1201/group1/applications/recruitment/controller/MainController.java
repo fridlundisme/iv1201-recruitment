@@ -23,16 +23,10 @@ public class MainController{
         return "index";
     }
 
-    @GetMapping({"/recruit"})
-    public String recruit(Model model){
-        return "recruit";
-    }
-
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("registrationForm", new Person());
         return "registration";
-
     }
 
     @GetMapping("/recruit")
@@ -40,4 +34,7 @@ public class MainController{
 
     @GetMapping("/apply")
     public String apply() {return "apply"; }
+
+    @GetMapping("/review")
+    public String review() {return "review"; }
 }
