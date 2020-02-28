@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
    @Override
    @Transactional(isolation = Isolation.SERIALIZABLE)
    public void save(Person person) {
-      person.setRole(roleJpaRepository.findByName("admin"));
+      person.setRole(roleJpaRepository.findByName("applicant"));
       person.setPassword(bCryptPasswordEncoder.encode(person.getPassword()));
       personJpaRepository.save(person);
    }

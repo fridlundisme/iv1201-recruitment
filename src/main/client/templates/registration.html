@@ -1,64 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap Simple Registration Form</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
-    .login-form {
-        width: 340px;
-        margin: 50px auto;
-    }
-    .login-form form {
-        margin-bottom: 15px;
-        background: #f7f7f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-    .login-form h2 {
-        margin: 0 0 15px;
-    }
-    .form-control, .btn {
-        min-height: 38px;
-        border-radius: 2px;
-    }
-    .btn {
-        font-size: 15px;
-        font-weight: bold;
-    }
-</style>
-</head>
-<body>
-<div class="login-form">
-    <form th:action="@{/registration}"method="POST" th:object="${registrationForm}">
-        <h2 class="text-center">Log in</h2>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required" th:field="*{username}">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required" th:field="*{password}">
-        </div>
-        <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email" required="required" th:field="*{email}">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Name" required="required" th:field="*{name}">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Surname" required="required" th:field="*{surname}">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="ssn" required="required" th:field="*{ssn}">
-        </div>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="layout/partials/head.html"></th:block>
+        <link rel="stylesheet" type="text/css" href="/css/register.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/errors.css"/>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    </head>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+    <body>
+        <th:block th:replace="layout/partials/navbar.html"></th:block>
+        <div class="container register-form">
+            <form th:action="@{/registration}" method="post" th:object="${registrationForm}">
+                <h2 class="text-center">Register</h2>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputName">Name</label>
+                        <label class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Name" th:field="*{name}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputSurname">Surname</label>
+                        <label class="error" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></label>
+                        <input type="text" class="form-control" id="inputSurname" placeholder="Surname" th:field="*{surname}" >
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputSsn">Social security number</label>
+                        <label class="error" th:if="${#fields.hasErrors('ssn')}" th:errors="*{ssn}"></label>
+                        <input type="text" class="form-control" id="inputSsn" placeholder="ssn" th:field="*{ssn}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputUsername">Username</label>
+                        <label class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></label>
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username" th:field="*{username}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">Email</label>
+                        <label class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email" th:field="*{email}">
+                    </div>
+                    <!-- <div class="form-group col-md-6">
+                        <label for="inputEmail">Confirm email</label>
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email" th:field="*{retypeEmail}">
+                        <label class="error" th:if="${#fields.hasErrors('retypeEmail')}" th:errors="*{retypeEmail}"></label>
+                    </div> -->
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" th:field="*{password}">
+                    </div>
+                    <!-- <div class="form-group col-md-6">
+                        <label for="inputPassword">Confirm password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" th:field="*{matchingPassword}">
+                    </div> -->
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                I confirm that the provided infomation is correct.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Next</button>
+            </form>
         </div>
-    </form>
-</div>
-</body>
+        <th:block th:replace="layout/partials/footer.html"></th:block>
+    </body>
 </html>

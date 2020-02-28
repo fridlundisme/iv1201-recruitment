@@ -1,0 +1,33 @@
+/**
+*The navigation bar container
+**/
+ul {
+    overflow: hidden;
+    background-color: #F1F1F1;
+}
+
+/**
+*Navigation bar links
+**/
+ul a {
+    float: left;
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/**
+*Links - change color on hover
+**/
+ul a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#divNav {
+    left: 0; 
+    top: 0; 
+    width: 100%;
+}

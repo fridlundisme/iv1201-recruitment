@@ -1,34 +1,58 @@
 package iv1201.group1.applications.recruitment.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "role")
-public class Role implements Serializable{
-   private static final long serialVersionUID = 1L;
-    
-	@Id
-   @Column(columnDefinition = "serial")
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long role_id;
-	@NotEmpty
+public class Role {
+   private Integer roleId;
    private String name;
+   private List<Person> peopleList;
 
-   public Role() { }
+   @Id
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_role_id_seq_generator")
+   @SequenceGenerator(name = "role_role_id_seq_generator", sequenceName = "role_role_id_seq", allocationSize = 1, initialValue = 4)
+   @Column(name = "role_id", nullable = false)
+   public Integer getRoleId() {
+      return roleId;
+   }
 
-	public Long getRole_id() {
-	   return role_id;
-	}
+   public void setRoleId(Integer roleId) {
+      this.roleId = roleId;
+   }
 
-	public void setRole_id(Long id) {
-	   this.role_id = id;
-	}
+   @Basic
+   @Column(name = "name", nullable = false, length = -1)
+   public String getName() {
+      return name;
+   }
 
-	public String getName() { return name; }
+   public void setName(String name) {
+      this.name = name;
+   }
 
-	public void setName(String name) { this.name = name; }
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Role that = (Role) o;
+      return Objects.equals(roleId, that.roleId) &&
+              Objects.equals(name, that.name);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(roleId, name);
+   }
+
+   @OneToMany(mappedBy = "role")
+   public List<Person> getPeopleList() {
+      return peopleList;
+   }
+
+   public void setPeopleList(List<Person> peopleByRoleId) {
+      this.peopleList = peopleByRoleId;
+   }
 }

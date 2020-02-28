@@ -1,37 +1,58 @@
 package iv1201.group1.applications.recruitment.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "competence")
-public class Competence implements Serializable{
+public class Competence {
+   private Integer competenceId;
+   private String name;
+   private Collection<CompetenceProfile> competenceProfileList;
 
-    public Competence(){}
-    @Id
-    @Column(columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long competence_id;
-    @NotEmpty
-    private String name;
+   @Id
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "competence_competence_id_seq_generator")
+   @SequenceGenerator(name = "competence_competence_id_seq_generator", sequenceName = "competence_competence_id_seq", allocationSize = 1, initialValue = 4)
+   @Column(name = "competence_id", nullable = false)
+   public Integer getCompetenceId() {
+      return competenceId;
+   }
 
-    public Long getCompetence_id() {
-        return competence_id;
-    }
+   public void setCompetenceId(Integer competenceId) {
+      this.competenceId = competenceId;
+   }
 
-    public void setCompetence_id(Long competence_id) {
-        this.competence_id = competence_id;
-    }
+   @Basic
+   @Column(name = "name", nullable = false, length = -1)
+   public String getName() {
+      return name;
+   }
 
-    public String getName() {
-        return name;
-    }
+   public void setName(String name) {
+      this.name = name;
+   }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Competence that = (Competence) o;
+      return Objects.equals(competenceId, that.competenceId) &&
+              Objects.equals(name, that.name);
+   }
 
-    
+   @Override
+   public int hashCode() {
+      return Objects.hash(competenceId, name);
+   }
+
+   @OneToMany(mappedBy = "competence")
+   public Collection<CompetenceProfile> getCompetenceProfileList() {
+      return competenceProfileList;
+   }
+
+   public void setCompetenceProfileList(Collection<CompetenceProfile> competenceProfilesByCompetenceId) {
+      this.competenceProfileList = competenceProfilesByCompetenceId;
+   }
 }

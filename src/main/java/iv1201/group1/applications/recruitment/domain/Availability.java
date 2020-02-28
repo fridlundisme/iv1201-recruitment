@@ -1,62 +1,71 @@
 package iv1201.group1.applications.recruitment.domain;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.List;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "availability")
-public class Availability implements Serializable {
+public class Availability {
+   private Integer availabilityId;
+   private Date fromDate;
+   private Date toDate;
+   private Person person;
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+   @Id
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "availability_availability_id_seq_generator")
+   @SequenceGenerator(name = "availability_availability_id_seq_generator", sequenceName = "availability_availability_id_seq", allocationSize = 1, initialValue = 4)
+   @Column(name = "availability_id", nullable = false)
+   public Integer getAvailabilityId() {
+      return availabilityId;
+   }
 
-    @Id
-    @Column(columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long availability_id;
-    @NotEmpty
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Person.class)
-    @JoinColumn(name = "person_id", insertable = false, updatable = false)
-    private List<Person> persons;
-    @NotEmpty
-    private LocalDateTime from_date;
-    @NotEmpty
-    private LocalDateTime to_date;
+   public void setAvailabilityId(Integer availabilityId) {
+      this.availabilityId = availabilityId;
+   }
 
-    public Long getAvailability_id(){
-        return this.availability_id;
-    }
+   @Basic
+   @Column(name = "from_date", nullable = false)
+   public Date getFromDate() {
+      return fromDate;
+   }
 
-    public void setAvailability_id(Long i) { this.availability_id = i; }
+   public void setFromDate(Date fromDate) {
+      this.fromDate = fromDate;
+   }
 
-    public List getPersons(){
-        return this.persons;
-    }
+   @Basic
+   @Column(name = "to_date", nullable = false)
+   public Date getToDate() {
+      return toDate;
+   }
 
-    public void setPersons(List<Person> plist){
-        this.persons = plist;
-    }
+   public void setToDate(Date toDate) {
+      this.toDate = toDate;
+   }
 
-    public LocalDateTime getFrom_date() {
-        return from_date;
-    }
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Availability that = (Availability) o;
+      return Objects.equals(availabilityId, that.availabilityId) &&
+              Objects.equals(fromDate, that.fromDate) &&
+              Objects.equals(toDate, that.toDate);
+   }
 
-    public void setFrom_date(LocalDateTime from_date) {
-        this.from_date = from_date;
-    }
+   @Override
+   public int hashCode() {
+      return Objects.hash(availabilityId, fromDate, toDate);
+   }
 
-    public LocalDateTime getTo_date() {
-        return to_date;
-    }
+   @ManyToOne
+   @JoinColumn(name = "person_id", referencedColumnName = "person_id")
+   public Person getPerson() {
+      return person;
+   }
 
-    public void setTo_date(LocalDateTime to_date) {
-        this.to_date = to_date;
-    }
-
+   public void setPerson(Person personByPersonId) {
+      this.person = personByPersonId;
+   }
 }
