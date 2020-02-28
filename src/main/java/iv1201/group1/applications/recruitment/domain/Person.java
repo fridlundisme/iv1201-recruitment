@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -23,6 +24,8 @@ public class Person {
    @NotBlank(message="Username is required")
    private String username;
    private Role role;
+   private List<Availability> availabilityList;
+   private List<CompetenceProfile> competenceProfileList;
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_person_id_seq_generator")
@@ -123,5 +126,23 @@ public class Person {
 
    public void setRole(Role roleByRoleId) {
       this.role = roleByRoleId;
+   }
+
+   @OneToMany(mappedBy = "person")
+   public List<Availability> getAvailabilityList() {
+      return availabilityList;
+   }
+
+   public void setAvailabilityList(List<Availability> availabilityByPersonId) {
+      this.availabilityList = availabilityByPersonId;
+   }
+
+   @OneToMany(mappedBy = "person")
+   public List<CompetenceProfile> getCompetenceProfileList() {
+      return competenceProfileList;
+   }
+
+   public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileByPersonId) {
+      this.competenceProfileList = competenceProfileByPersonId;
    }
 }

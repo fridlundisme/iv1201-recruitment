@@ -1,5 +1,6 @@
 package iv1201.group1.applications.recruitment.controller;
 
+import iv1201.group1.applications.recruitment.service.ApplicationService;
 import iv1201.group1.applications.recruitment.service.SecurityService;
 import iv1201.group1.applications.recruitment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class MainController{
     @Autowired
     private SecurityService securityService;
 
+    @Autowired
+    private ApplicationService applicationService
+
     @GetMapping({"/", "/index"})
     public String index(Model model){
         model.addAttribute("isRecruit", securityService.isRecruit());
@@ -31,6 +35,7 @@ public class MainController{
 
     @GetMapping("/apply")
     public String apply(Model model) {
+        model.addAttribute("competenceList", applicationService.getCompetenceList());
         model.addAttribute("applicationForm");
         return "apply";
     }
