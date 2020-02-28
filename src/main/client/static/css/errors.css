@@ -2,3 +2,14 @@ label.error{
     color: red;
     font-style: italic;
 }
+
+#errorType{
+    font-size: 9rem;
+    color: #800000;
+    
+}
+
+#errorMsg{
+    font-size: 4rem;
+    color: rgb(0, 0, 0);
+}
