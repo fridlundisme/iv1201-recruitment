@@ -19,7 +19,7 @@ public class MainController{
     private SecurityService securityService;
 
     @Autowired
-    private ApplicationService applicationService
+    private ApplicationService applicationService;
 
     @GetMapping({"/", "/index"})
     public String index(Model model){
