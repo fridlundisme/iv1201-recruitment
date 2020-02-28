@@ -34,6 +34,6 @@ public class RegistrationController {
 
         //securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
 
-        return "apply";
+        return "redirect:apply";
     }
 }

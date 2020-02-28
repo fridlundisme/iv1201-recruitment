@@ -30,7 +30,10 @@ public class MainController{
     }
 
     @GetMapping("/apply")
-    public String apply() {return "apply"; }
+    public String apply(Model model) {
+        model.addAttribute("applicationForm");
+        return "apply";
+    }
 
     @GetMapping("/review")
     public String review() {return "review"; }

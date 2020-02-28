@@ -4,12 +4,12 @@
     <head>
         <th:block th:replace="layout/partials/head.html"></th:block>
         <link rel="stylesheet" type="text/css" href="/css/register.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/errors.css"/>
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     </head>
 
     <body>
         <th:block th:replace="layout/partials/navbar.html"></th:block>
+
         <div class="container register-form">
             <form th:action="@{/registration}" method="post" th:object="${registrationForm}">
                 <h2 class="text-center">Register</h2>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" th:href="@{/apply}">Next</button>
+                <button type="submit" class="btn btn-primary">Next</button>
             </form>
         </div>
         <th:block th:replace="layout/partials/footer.html"></th:block>
