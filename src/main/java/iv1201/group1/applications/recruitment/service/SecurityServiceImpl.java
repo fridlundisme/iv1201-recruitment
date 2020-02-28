@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -33,11 +34,13 @@ public class SecurityServiceImpl implements SecurityService {
    }
 
    @Override
+   @Transactional
    public boolean isRecruit() {
       return SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("recruit"));
    }
 
    @Override
+   @Transactional
    public void autoLogin(String username, String password) {
       UserDetails userDetails = userDetailsService.loadUserByUsername(username);
       UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
