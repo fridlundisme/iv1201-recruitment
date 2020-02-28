@@ -38,11 +38,6 @@ drop index if exists "public"."person_pkey";
 
 drop index if exists "public"."role_pkey";
 
-create table "public"."authority" (
-    "id" integer not null,
-    "name" character varying(255)
-);
-
 
 alter table "public"."availability" alter column "availability_id" set default nextval('availability_availability_id_seq'::regclass);
 
@@ -118,8 +113,6 @@ alter table "public"."role" alter column "role_id" set default nextval('role_rol
 
 alter table "public"."role" alter column "role_id" set data type integer using "role_id"::integer;
 
-CREATE UNIQUE INDEX authority_pkey ON public.authority USING btree (id);
-
 CREATE UNIQUE INDEX availability_pk ON public.availability USING btree (availability_id);
 
 CREATE UNIQUE INDEX competence_name_uindex ON public.competence USING btree (name);
@@ -138,8 +131,6 @@ CREATE UNIQUE INDEX role_name_uindex ON public.role USING btree (name);
 
 CREATE UNIQUE INDEX role_pk ON public.role USING btree (role_id);
 
-alter table "public"."authority" add constraint "authority_pkey" PRIMARY KEY using index "authority_pkey";
-
 alter table "public"."availability" add constraint "availability_pk" PRIMARY KEY using index "availability_pk";
 
 alter table "public"."competence" add constraint "competence_pk" PRIMARY KEY using index "competence_pk";
@@ -157,5 +148,8 @@ alter table "public"."competence_profile" add constraint "competence_profile_com
 alter table "public"."competence_profile" add constraint "competence_profile_person_person_id_fk" FOREIGN KEY (person_id) REFERENCES person(person_id);
 
 alter table "public"."person" add constraint "person___fk" FOREIGN KEY (role_id) REFERENCES role(role_id) ON UPDATE CASCADE;
+
+update person SET password = crypt(password, gen_salt('bf'));
+
 
 

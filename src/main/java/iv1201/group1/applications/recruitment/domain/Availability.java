@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "availability", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+@Table(name = "availability")
 public class Availability {
    private Integer availabilityId;
    private Date fromDate;
@@ -13,7 +13,8 @@ public class Availability {
    private Person person;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "availability_availability_id_seq_generator")
+   @SequenceGenerator(name = "availability_availability_id_seq_generator", sequenceName = "availability_availability_id_seq", allocationSize = 1, initialValue = 4)
    @Column(name = "availability_id", nullable = false)
    public Integer getAvailabilityId() {
       return availabilityId;

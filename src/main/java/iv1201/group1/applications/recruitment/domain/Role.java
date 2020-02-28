@@ -5,14 +5,15 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "role", schema = "webapplication", catalog = "d8c0h1d8h1n2en")
+@Table(name = "role")
 public class Role {
    private Integer roleId;
    private String name;
    private List<Person> peopleList;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_role_id_seq_generator")
+   @SequenceGenerator(name = "role_role_id_seq_generator", sequenceName = "role_role_id_seq", allocationSize = 1, initialValue = 4)
    @Column(name = "role_id", nullable = false)
    public Integer getRoleId() {
       return roleId;

@@ -2,14 +2,14 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <th:block th:replace="/layout/partials/head.html"></th:block>
+        <th:block th:replace="layout/partials/head.html"></th:block>
         <link rel="stylesheet" type="text/css" href="/css/register.css"/>
         <link rel="stylesheet" type="text/css" href="/css/errors.css"/>
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     </head>
 
     <body>
-        <th:block th:replace="/layout/partials/navbar.html"></th:block>
+        <th:block th:replace="layout/partials/navbar.html"></th:block>
         <div class="container register-form">
             <form th:action="@{/registration}" method="post" th:object="${registrationForm}">
                 <h2 class="text-center">Register</h2>
@@ -34,7 +34,7 @@
                     <div class="form-group col-md-6">
                         <label for="inputUsername">Username</label>
                         <label class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></label>
-                        <input type="username" class="form-control" id="inputUsername" placeholder="Username" th:field="*{username}">
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username" th:field="*{username}">
                     </div>
                 </div>
                 <div class="form-row">
@@ -70,6 +70,6 @@
                 <button type="submit" class="btn btn-primary">Next</button>
             </form>
         </div>
-        <th:block th:replace="/layout/partials/footer.html"></th:block>
+        <th:block th:replace="layout/partials/footer.html"></th:block>
     </body>
 </html>
