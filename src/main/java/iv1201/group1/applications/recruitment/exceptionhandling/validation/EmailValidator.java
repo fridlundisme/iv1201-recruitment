@@ -6,6 +6,12 @@ import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+
+/**
+ * This validator is copied from Baeldungs tutorial on Spring mvc validation
+ * @see
+ * <a href="www.baeldungs.com">Baeldungs tutorial</a>
+ */
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
     private Pattern pattern;
     private Matcher matcher;
