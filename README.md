@@ -1,10 +1,9 @@
 # IV1201 - Recruitish
 
-The easy way to recruit and apply for jobs.
+The easy way to recruit and apply for jobs. This page will show the functions of the recruitment site.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -72,9 +71,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Oliver Wilén** - [OliverWilen](https://github.com/OliverWilen)
+* **Sofia Söderström** - [MissTrap](https://github.com/MissTrap)
+* **Joakim Fridlund** - [Fridlundisme](https://github.com/fridlundisme)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
@@ -82,6 +82,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Baeldung for providing helpful tips with spring security. Some code taken from their [spring-security](https://github.com/Baeldung/spring-security-registration) repo
