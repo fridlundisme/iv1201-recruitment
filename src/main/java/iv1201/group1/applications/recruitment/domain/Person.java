@@ -2,7 +2,9 @@ package iv1201.group1.applications.recruitment.domain;
 
 import javax.persistence.*;
 
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
+
+import iv1201.group1.applications.recruitment.exceptionhandling.validation.ValidEmail;
 
 import java.util.Objects;
 
@@ -17,6 +19,7 @@ public class Person {
    @NotBlank(message="Social security number is required")
    private String ssn;
    @NotBlank(message="Email is required")
+   @ValidEmail
    private String email;
    @NotBlank(message="Password is required")
    private String password;

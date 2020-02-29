@@ -7,4 +7,6 @@ public interface UserService {
    void save(Person person);
 
    Person findByUsername(String username);
+
+   boolean userExists(String user);
 }
