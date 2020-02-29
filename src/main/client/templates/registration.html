@@ -34,6 +34,7 @@
                     <div class="form-group col-md-6">
                         <label for="inputUsername">Username</label>
                         <label class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></label>
+                        <label class="error" th:if="${userExist}" th:text="${userExist}"> User already exists</label>
                         <input type="text" class="form-control" id="inputUsername" placeholder="Username" th:field="*{username}">
                     </div>
                 </div>
