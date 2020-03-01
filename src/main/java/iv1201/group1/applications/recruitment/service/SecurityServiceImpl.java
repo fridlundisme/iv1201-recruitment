@@ -1,7 +1,6 @@
 package iv1201.group1.applications.recruitment.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SecurityServiceImpl implements SecurityService {
+   
    @Autowired
    private AuthenticationManager authenticationManager;
 

@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
       if(userExists(person.getUsername())){
          throw new UserAlreadyExistException("Username taken " + person.getUsername());
       }
+
       person.setRole(roleJpaRepository.findByName("applicant"));
       person.setPassword(bCryptPasswordEncoder.encode(person.getPassword()));
       personJpaRepository.save(person);
