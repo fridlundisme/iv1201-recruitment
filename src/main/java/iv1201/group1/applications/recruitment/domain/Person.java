@@ -1,7 +1,10 @@
 package iv1201.group1.applications.recruitment.domain;
 
 import javax.persistence.*;
+
 import javax.validation.constraints.NotBlank;
+
+import iv1201.group1.applications.recruitment.exceptionhandling.validation.ValidEmail;
 
 import java.util.Objects;
 
@@ -16,6 +19,7 @@ public class Person {
    @NotBlank(message="Social security number is required")
    private String ssn;
    @NotBlank(message="Email is required")
+   @ValidEmail
    private String email;
    @NotBlank(message="Password is required")
    private String password;
@@ -24,7 +28,8 @@ public class Person {
    private Role role;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_person_id_seq_generator")
+   @SequenceGenerator(name = "person_person_id_seq_generator", sequenceName = "person_person_id_seq", allocationSize = 1, initialValue = 4)
    @Column(name = "person_id", nullable = false)
    public Integer getPersonId() {
       return personId;

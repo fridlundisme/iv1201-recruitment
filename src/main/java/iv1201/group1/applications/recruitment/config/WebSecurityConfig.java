@@ -11,10 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Qualifier("userDetailsServiceImpl")
     @Autowired
@@ -25,16 +26,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler customAuthenticationSuccessManager() {
+        return new CustomAuthenticationSuccessHandler();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/register", "/registration", "/index","/css/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
+                    .antMatchers("/", "/register", "/registration", "/index", "/css/**").permitAll()
+                    .antMatchers("/recruit").hasAuthority("recruit")
+                    .antMatchers("/apply").hasAuthority("applicant")
+                    .anyRequest().authenticated()
+                    .and()
+
                 .formLogin()
                     .loginPage("/login")
                     .permitAll()
+                    .successHandler(customAuthenticationSuccessManager())
                     .and()
                 .logout()
                     .permitAll();

@@ -12,7 +12,8 @@ public class Competence {
    private Collection<CompetenceProfile> competenceProfileList;
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "competence_competence_id_seq_generator")
+   @SequenceGenerator(name = "competence_competence_id_seq_generator", sequenceName = "competence_competence_id_seq", allocationSize = 1, initialValue = 4)
    @Column(name = "competence_id", nullable = false)
    public Integer getCompetenceId() {
       return competenceId;

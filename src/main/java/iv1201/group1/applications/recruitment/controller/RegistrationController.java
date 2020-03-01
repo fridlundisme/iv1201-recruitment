@@ -21,14 +21,16 @@ public class RegistrationController {
 
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("registrationForm") @Valid Person registrationForm, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("registrationForm") @Valid Person registerPerson, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors())
             return "registration";
 
-        userService.save(registrationForm);
+        System.out.println(registerPerson.toString());
 
-        securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
+        userService.save(registerPerson);
+
+        securityService.autoLogin(registerPerson.getUsername(), registerPerson.getPassword());
 
         return "index";
     }

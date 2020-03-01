@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="layout/partials/head.html"></th:block>
+        <link rel="stylesheet" type="text/css" href="/css/login.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/errors.css"/>
+    </head>
+
+    <div class="container-fluid center-block">
+    <h1 id="errorType" class="text-center" th:text="${'Error: ' + errorType}">Error type</h1>
+    <h2 id="errorMsg" class="text-center" th:text="${errorMsg}"> Error message</h2>
+    </div>
