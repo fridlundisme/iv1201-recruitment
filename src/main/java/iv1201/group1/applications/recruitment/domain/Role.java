@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A object role that is mapped to the table with the same name in the database.
+ */
 @Entity
 @Table(name = "role")
 public class Role {
@@ -33,6 +36,11 @@ public class Role {
       this.name = name;
    }
 
+   /**
+    * A function for comparing this object with an object o.
+    * @param o an object that is to be compared.
+    * @return a boolean value true/false.
+    */
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -42,6 +50,10 @@ public class Role {
               Objects.equals(name, that.name);
    }
 
+   /**
+    * Function that hash the object.
+    * @return returns the hash of the object.
+    */
    @Override
    public int hashCode() {
       return Objects.hash(roleId, name);

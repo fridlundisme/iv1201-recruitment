@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * A object competence that is mapped to the table in the database with the same name.
+ */
 @Entity
 @Table(name = "competence")
 public class Competence {
@@ -33,6 +36,11 @@ public class Competence {
       this.name = name;
    }
 
+   /**
+    * Compares the competence object o with this competence object.
+    * @param o is a competence object.
+    * @return returns a boolean that says if the objects are equal or not.
+    */
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;

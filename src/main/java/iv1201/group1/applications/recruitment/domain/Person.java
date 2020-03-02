@@ -8,6 +8,9 @@ import iv1201.group1.applications.recruitment.exceptionhandling.validation.Valid
 
 import java.util.Objects;
 
+/**
+ * A object person that is mapped to the table with the same name in the database.
+ */
 @Entity
 @Table(name = "person")
 public class Person {
@@ -99,6 +102,11 @@ public class Person {
       this.username = username;
    }
 
+   /**
+    * A function for comparing this object with a object o.
+    * @param o
+    * @return returns true/false.
+    */
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -113,6 +121,10 @@ public class Person {
               Objects.equals(username, that.username);
    }
 
+   /**
+    * A function for hashing the object.
+    * @return returns the hash of the object.
+    */
    @Override
    public int hashCode() {
       return Objects.hash(personId, name, surname, ssn, email, password, username);
