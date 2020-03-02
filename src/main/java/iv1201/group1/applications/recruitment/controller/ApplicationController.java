@@ -1,21 +1,17 @@
 package iv1201.group1.applications.recruitment.controller;
 
 import iv1201.group1.applications.recruitment.domain.Availability;
-import iv1201.group1.applications.recruitment.domain.Competence;
 import iv1201.group1.applications.recruitment.domain.CompetenceProfile;
-import iv1201.group1.applications.recruitment.domain.Person;
+import iv1201.group1.applications.recruitment.service.ApplicationFormDTO;
 import iv1201.group1.applications.recruitment.service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.sql.Date;
-import java.util.List;
 
 /**
  * Controller for the view where the applicant can fill in their availability and competences.

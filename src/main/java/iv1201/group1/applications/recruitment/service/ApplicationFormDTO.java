@@ -1,4 +1,4 @@
-package iv1201.group1.applications.recruitment.controller;
+package iv1201.group1.applications.recruitment.service;
 
 import iv1201.group1.applications.recruitment.domain.Availability;
 import iv1201.group1.applications.recruitment.domain.Competence;
