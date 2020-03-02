@@ -2,6 +2,8 @@
 
 The easy way to recruit and apply for jobs. This page will show the functions of the recruitment site.
 
+## Development
+
 If you want to further develop this project, please visit the [Wiki](https://github.com/fridlundisme/iv1201-recruitment/wiki) for more detailed information.
 
 ## Application
