@@ -17,19 +17,36 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * Controller for the view where the applicant can fill in their availability and competences.
+ */
 @Controller
 public class ApplicationController {
 
    @Autowired
    private ApplicationService applicationService;
 
-
+   /**
+    * Function for getting a competence list from the database when entering the page apply.
+    * @param model
+    * @return the page apply with the correct options for competences.
+    */
    @GetMapping("/apply")
    public String apply(Model model) {
       model.addAttribute("competenceList", applicationService.getCompetenceList());
       return "apply";
    }
 
+   /**
+    * Function that handles the request to review your application after adding competences and availability.
+    * @param model
+    * @param competences
+    * @param yearsOfExperienceList
+    * @param fromDateList
+    * @param toDateList
+    * @param redirectAttributes
+    * @return returns the next view, the review page, if successful.
+    */
    @PostMapping("/apply")
    public String apply(Model model, @RequestParam(value = "competences") String[] competences, @RequestParam(value = "yearsOfExperienceList") int[] yearsOfExperienceList, @RequestParam(value = "fromDate") Date[] fromDateList, @RequestParam(value = "toDate") Date[] toDateList, RedirectAttributes redirectAttributes) {
       ApplicationFormDTO applicationFormDTO = new ApplicationFormDTO();

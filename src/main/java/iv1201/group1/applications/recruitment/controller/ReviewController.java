@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/**
+ * Controller for the page where the applicant can review their application.
+ */
 @Controller
 @SessionAttributes("applicationDTO")
 public class ReviewController {
@@ -23,12 +26,23 @@ public class ReviewController {
    @Autowired
    SecurityService securityService;
 
+   /**
+    * Function for entering the page and getting the needed functionality to view the application before submitting.
+    * @param applicationFormDTO gives the information about competences and availability.
+    * @param model gives information about the applicant.
+    * @return returns the requested view review.
+    */
    @GetMapping("/review")
-   public String review(@ModelAttribute("applicationDTO") ApplicationFormDTO applicationFormDTO, Model model, RedirectAttributes redirectAttributes) {
+   public String review(@ModelAttribute("applicationDTO") ApplicationFormDTO applicationFormDTO, Model model) {
       model.addAttribute("applicationDTO", applicationFormDTO);
       return "review";
    }
 
+   /**
+    * Function for adding information to the database and sending the applicant to the next view, the index page.
+    * @param applicationFormDTO gives the information about competences and availability.
+    * @return the page index.
+    */
    @PostMapping("/review")
    public String review(@ModelAttribute("applicationDTO") ApplicationFormDTO applicationFormDTO) {
       for (Availability availability : applicationFormDTO.getAvailabilityList()) {
@@ -42,6 +56,10 @@ public class ReviewController {
       return "index";
    }
 
+   /**
+    * A get for applicationDTO
+    * @return returns application DTO.
+    */
    @ModelAttribute
    public ApplicationFormDTO applicationDTO() {
       return new ApplicationFormDTO();
