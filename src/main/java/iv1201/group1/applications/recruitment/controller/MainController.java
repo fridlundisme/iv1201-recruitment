@@ -25,21 +25,4 @@ public class MainController{
         model.addAttribute("isRecruit", securityService.isRecruit());
         return "index";
     }
-
-    /** 
-     * Catches the "/recruit" website and mapps it.
-     * @param model
-     * @return recruit website
-     */
-    @GetMapping({"/recruit"})
-    public String recruit(Model model){
-        return "recruit";
-    }
-
-    /**
-     * Catches the apply website
-     * @return apply site
-     */
-    @GetMapping("/apply")
-    public String apply() {return "apply"; }
 }

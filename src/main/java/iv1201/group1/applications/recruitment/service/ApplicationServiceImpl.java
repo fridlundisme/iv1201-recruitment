@@ -10,6 +10,7 @@ import iv1201.group1.applications.recruitment.model.CompetenceProfileJpaReposito
 import iv1201.group1.applications.recruitment.model.PersonJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -35,20 +36,20 @@ public class ApplicationServiceImpl implements ApplicationService {
    }
 
    @Override
-   @Transactional
+   @Transactional(readOnly = true)
    public Competence getCompetenceByName(String competence) {
       return competenceJpaRepository.findByName(competence);
    }
 
    @Override
-   @Transactional
+   @Transactional(isolation = Isolation.SERIALIZABLE)
    public void save(Availability availability, String username) {
       availability.setPerson(personJpaRepository.findByUsername(username));
       availabilityJpaRepository.save(availability);
    }
 
    @Override
-   @Transactional
+   @Transactional(isolation = Isolation.SERIALIZABLE)
    public void save(CompetenceProfile competenceProfile, String username) {
       competenceProfile.setPerson(personJpaRepository.findByUsername(username));
       competenceProfileJpaRepository.save(competenceProfile);

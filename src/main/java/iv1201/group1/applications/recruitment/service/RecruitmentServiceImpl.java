@@ -11,7 +11,7 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
    @Autowired
    private PersonJpaRepository personJpaRepository;
-
+   
    @Override
    @Transactional(readOnly = true)
    public List<Person> getPersonList() { return PersonJpaRepository.findAllByRoleId(2); }
