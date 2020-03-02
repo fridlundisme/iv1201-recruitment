@@ -15,6 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * implementations of services/functions from the interface for handling competences and availability in the
+ * application.
+ */
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
    @Autowired
@@ -29,18 +33,32 @@ public class ApplicationServiceImpl implements ApplicationService {
    @Autowired
    private CompetenceProfileJpaRepository competenceProfileJpaRepository;
 
+   /**
+    * Get for competences.
+    * @return returns a list of available competences from the database.
+    */
    @Override
    @Transactional(readOnly = true)
    public List<Competence> getCompetenceList() {
       return competenceJpaRepository.findAll();
    }
 
+   /**
+    * Get for competence found by name.
+    * @param competence
+    * @return returns competence.
+    */
    @Override
    @Transactional(readOnly = true)
    public Competence getCompetenceByName(String competence) {
       return competenceJpaRepository.findByName(competence);
    }
 
+   /**
+    * Function for saving (adding to database) availability to the given person found by username.
+    * @param availability
+    * @param username
+    */
    @Override
    @Transactional(isolation = Isolation.SERIALIZABLE)
    public void save(Availability availability, String username) {
@@ -48,6 +66,11 @@ public class ApplicationServiceImpl implements ApplicationService {
       availabilityJpaRepository.save(availability);
    }
 
+   /**
+    * Function for saving (adding to database) competence profile to given person found by username.
+    * @param competenceProfile
+    * @param username
+    */
    @Override
    @Transactional(isolation = Isolation.SERIALIZABLE)
    public void save(CompetenceProfile competenceProfile, String username) {

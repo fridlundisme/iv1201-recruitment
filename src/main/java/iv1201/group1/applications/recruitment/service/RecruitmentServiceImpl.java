@@ -7,11 +7,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Implements functions/services that handles recruitment.
+ */
 public class RecruitmentServiceImpl implements RecruitmentService {
 
    @Autowired
    private PersonJpaRepository personJpaRepository;
-   
+
+   /**
+    * A function for getting the list of applications.
+    * @return returns a list of persons that has the role applicant.
+    */
    @Override
    @Transactional(readOnly = true)
    public List<Person> getPersonList() { return PersonJpaRepository.findAllByRoleId(2); }

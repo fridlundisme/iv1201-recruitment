@@ -7,6 +7,9 @@ import iv1201.group1.applications.recruitment.domain.Person;
 
 import java.util.List;
 
+/**
+ * Interface for services handling availabilities and competences for the application.
+ */
 public interface ApplicationService {
    List<Competence> getCompetenceList();
 
