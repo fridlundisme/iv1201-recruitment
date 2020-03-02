@@ -25,15 +25,14 @@ public class RegistrationController {
 
 
     @PostMapping("/registration")
-    public ModelAndView registration(@ModelAttribute("registrationForm") @Valid Person registrationForm, BindingResult bindingResult, ModelAndView modelAndView) {
+    public String registration(@ModelAttribute("registrationForm") @Valid Person registrationForm, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors())
-            return modelAndView;
+            return "registration";
 
-        //userService.save(registrationForm);
-        modelAndView.setViewName("apply");
-        //securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
+        userService.save(registrationForm);
+        securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
 
-        return modelAndView;
+        return "redirect:apply";
     }
 }

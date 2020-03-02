@@ -9,6 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import iv1201.group1.applications.recruitment.domain.Person;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Objects;
 
 @Controller
 public class MainController{
@@ -32,13 +37,4 @@ public class MainController{
         model.addAttribute("registrationForm", new Person());
         return "registration";
     }
-
-    @GetMapping("/apply")
-    public String apply(Model model) {
-        model.addAttribute("competenceList", applicationService.getCompetenceList());
-        return "apply";
-    }
-
-    @GetMapping("/review")
-    public String review() {return "review"; }
 }

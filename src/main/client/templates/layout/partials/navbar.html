@@ -1,13 +1,14 @@
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <div id="divNav">
     <ul>
         <!--placeholder for flag-->
         <!--placeholder for logo-->
-        <a th:href="@{/registration}">Apply</a>
-        <a th:href="@{/recruit}">Internal pages</a>
-        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/apply}">Apply</a>
+        <!--<a th:href="@{/recruit}">Internal pages</a>-->
+        <a sec:authorize="isAnonymous()"  th:href="@{/login}">Login</a>
+        <a sec:authorize="isAnonymous()" th:href="@{/registration}">Register</a>
         <!--or-->
-        <form th:action="@{/logout}" method="post" id="signOut">
+        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" id="signOut">
             <input type="submit" value="Sign Out"/>
         </form>
     </ul>

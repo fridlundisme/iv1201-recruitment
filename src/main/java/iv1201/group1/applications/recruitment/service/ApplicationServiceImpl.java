@@ -36,16 +36,21 @@ public class ApplicationServiceImpl implements ApplicationService {
 
    @Override
    @Transactional
-   public void setCompetenceProfile(Person person, Competence competence, CompetenceProfile competenceProfile) {
-      competenceProfile.setPerson(person);
-      competenceProfile.setCompetence(competence);
-      competenceProfileJpaRepository.save(competenceProfile);
+   public Competence getCompetenceByName(String competence) {
+      return competenceJpaRepository.findByName(competence);
    }
 
    @Override
    @Transactional
-   public void setAvailability(Person person, Availability availability) {
-      availability.setPerson(person);
+   public void save(Availability availability, String username) {
+      availability.setPerson(personJpaRepository.findByUsername(username));
       availabilityJpaRepository.save(availability);
+   }
+
+   @Override
+   @Transactional
+   public void save(CompetenceProfile competenceProfile, String username) {
+      competenceProfile.setPerson(personJpaRepository.findByUsername(username));
+      competenceProfileJpaRepository.save(competenceProfile);
    }
 }

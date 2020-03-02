@@ -14,7 +14,7 @@ public class Availability {
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "availability_availability_id_seq_generator")
-   @SequenceGenerator(name = "availability_availability_id_seq_generator", sequenceName = "availability_availability_id_seq", allocationSize = 1, initialValue = 4)
+   @SequenceGenerator(name = "availability_availability_id_seq_generator", sequenceName = "availability_availability_id_seq", allocationSize = 1)
    @Column(name = "availability_id", nullable = false)
    public Integer getAvailabilityId() {
       return availabilityId;
@@ -67,5 +67,10 @@ public class Availability {
 
    public void setPerson(Person personByPersonId) {
       this.person = personByPersonId;
+   }
+
+   public void setDates(Date fromDate, Date toDate){
+      this.fromDate = fromDate;
+      this.toDate = toDate;
    }
 }

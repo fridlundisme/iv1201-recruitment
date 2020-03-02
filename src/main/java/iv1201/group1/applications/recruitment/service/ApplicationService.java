@@ -10,7 +10,9 @@ import java.util.List;
 public interface ApplicationService {
    List<Competence> getCompetenceList();
 
-   void setCompetenceProfile(Person person, Competence competence, CompetenceProfile competenceProfile);
+   Competence getCompetenceByName(String competence);
 
-   void setAvailability(Person person, Availability availability);
+   void save(Availability availability, String username);
+
+   void save(CompetenceProfile competenceProfile, String username);
 }

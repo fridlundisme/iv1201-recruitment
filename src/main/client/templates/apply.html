@@ -8,19 +8,19 @@
     <th:block th:replace="layout/partials/navbar.html"></th:block>
 
     <div class="container apply-form">
-        <form th:action="@{/apply}" method="post" th:object="${applicationForm}">
+        <form th:action="@{/apply}" method="post">
             <h2 class="text-center">Application - Additional information</h2>
-            <div class="selectSkill" th:field="*{competenceForm}">
+            <div class="selectSkill">
                 <label for="selectSkills">Select your skills</label>
                 <div class="custom-select">
-                    <select id="selectSkills" >
-                        <option th:each="competence : ${competenceList}" th:value="${competence}" th:text="#{${competence.getName()}}">Add a skill..</option>
+                    <select id="selectSkills" name="competences">
+                        <option th:each="competence : ${competenceList}" th:value="${competence.name}" th:text="${competence.getName()}">Add a skill..</option>
                     </select>
                 </div>
 
                 <div>
                     <label for="selectYears">Years of experience: </label>
-                    <input type="text" name="yearsExp" id="selectYears" placeholder="0" th:value="*{Long}">
+                    <input type="text" id="selectYears" placeholder="0" name="yearsOfExperienceList">
                 </div>
             </div>
 
@@ -35,13 +35,13 @@
                 <button type="button" id="buttonAddSkill" onclick="addSelectSkill()">+</button>
             </div>
 
-            Select the time periods that you are available to work:
-            <div class="selectTime" th:field="availabilityForm">
+            <p>Select the time periods that you are available to work:</p>
+            <div class="selectTime">
                 <label for="from">From:</label>
-                <input type="date" name="from" id="from" th:value="*{availability}">
+                <input type="date" name="fromDate" id="from">
 
                 <label for="to">to:</label>
-                <input type="date" name="to" id="to" th:value="*{Long}">
+                <input type="date" name="toDate" id="to">
             </div>
 
             <script>

@@ -8,24 +8,18 @@
 <body>
     <th:block th:replace="/layout/partials/navbar.html"></th:block>
 
-    <script>
-        function reviewApplication(){
-            //donnu what to put here
-        }
-    </script>
-    <script>
-        function reviewRegistration(){
-            //donnu what to put here
-        }
-    </script>
 
     <div class="container review-form">
-        <form th:action="@{/review}" method="post" th:object="${reviewedApplication}">
+        <form th:action="@{/review}" method="post" th:object="${applicationDTO}">
             <h2 class="text-center">Review your application</h2>
-            <div class="reviewRegistration" onload="reviewRegistration()"></div>
-
-            <div class="reviewApply" onload="reviewApplication()"></div>
-
+            <div th:each="competenceProfile : ${applicationDTO.getCompetenceProfileList()}">
+                <p th:text="${competenceProfile.getCompetence().getName()}"></p>
+                <p th:text="${competenceProfile.getYearsOfExperience().toString()}"></p>
+            </div>
+            <div th:each="availabilty : ${applicationDTO.getAvailabilityList()}">
+                <p th:text="${availabilty.getFromDate().toString()}"></p>
+                <p th:text="${availabilty.getToDate().toString()}"></p>
+            </div>
             <button type="submit" value="Submit"/>Submit</button>
         </form>
     </div>

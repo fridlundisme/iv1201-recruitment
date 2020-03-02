@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CompetenceJpaRepository extends JpaRepository<Competence,Long>{
    List<Competence> findAll();
+
+   Competence findByName(String name);
 }
