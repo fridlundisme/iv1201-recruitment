@@ -10,5 +10,5 @@ public interface PersonJpaRepository extends JpaRepository<Person,Long>{
 
     static List<Person> findAllByRoleId(int roleId) { return null; }
 
-	  Person findByEmail(String email);
+    Person findByEmail(String email);
 }
