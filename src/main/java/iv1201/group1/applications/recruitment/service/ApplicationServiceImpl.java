@@ -3,7 +3,6 @@ package iv1201.group1.applications.recruitment.service;
 import iv1201.group1.applications.recruitment.domain.Availability;
 import iv1201.group1.applications.recruitment.domain.Competence;
 import iv1201.group1.applications.recruitment.domain.CompetenceProfile;
-import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.model.AvailabilityJpaRepository;
 import iv1201.group1.applications.recruitment.model.CompetenceJpaRepository;
 import iv1201.group1.applications.recruitment.model.CompetenceProfileJpaRepository;

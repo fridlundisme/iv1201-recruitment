@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.service.SecurityServiceImpl;
 import iv1201.group1.applications.recruitment.service.UserService;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * Handles all the registration requests
