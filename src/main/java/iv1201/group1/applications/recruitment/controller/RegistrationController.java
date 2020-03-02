@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.service.SecurityService;
 import iv1201.group1.applications.recruitment.service.UserService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class RegistrationController {
@@ -23,17 +25,15 @@ public class RegistrationController {
 
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("registrationForm") @Valid Person registrationForm, BindingResult bindingResult) {
+    public ModelAndView registration(@ModelAttribute("registrationForm") @Valid Person registrationForm, BindingResult bindingResult, ModelAndView modelAndView) {
 
         if (bindingResult.hasErrors())
-            return "registration";
-
-        System.out.println(registrationForm.toString());
+            return modelAndView;
 
         //userService.save(registrationForm);
-
+        modelAndView.setViewName("apply");
         //securityService.autoLogin(registrationForm.getUsername(), registrationForm.getPassword());
 
-        return "redirect:apply";
+        return modelAndView;
     }
 }

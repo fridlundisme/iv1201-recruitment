@@ -36,7 +36,6 @@ public class MainController{
     @GetMapping("/apply")
     public String apply(Model model) {
         model.addAttribute("competenceList", applicationService.getCompetenceList());
-        model.addAttribute("applicationForm");
         return "apply";
     }
 

@@ -8,17 +8,16 @@
 <body>
     <th:block th:replace="layout/partials/navbar.html"></th:block>
 
-    <div th:if="${param.error}">
-        Invalid username and password.
+    <div class="container login-form">
+        <form th:action="@{/login}" method="post">
+            <h2 class="text-center">Log in</h2>
+            <div th:if="${param.error}" class="form-group">Invalid username and password.</div>
+            <div th:if="${param.logout}" class="form-group">You have been logged out.</div>
+            <div class="form-group"><label> User Name : <input type="text" name="username"/> </label></div>
+            <div class="form-group"><label> Password: <input type="password" name="password"/> </label></div>
+            <div class="form-group"><input type="submit" value="Sign In"/></div>
+        </form>
     </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-    <form th:action="@{/login}" method="post">
-        <div><label> User Name : <input type="text" name="username"/> </label></div>
-        <div><label> Password: <input type="password" name="password"/> </label></div>
-        <div><input type="submit" value="Sign In"/></div>
-    </form>
 
     <th:block th:replace="layout/partials/footer.html"></th:block>
 </body>

@@ -10,21 +10,17 @@
     <div class="container apply-form">
         <form th:action="@{/apply}" method="post" th:object="${applicationForm}">
             <h2 class="text-center">Application - Additional information</h2>
-            <div class="selectSkill">
+            <div class="selectSkill" th:field="*{competenceForm}">
                 <label for="selectSkills">Select your skills</label>
-                <!--FIX SO DATA DECIDES OPTIONS-->
                 <div class="custom-select">
-                    <select id="selectSkills" th:selected="*{skill}">
-                        <option value="0">Add a skill..</option>
-                        <option value="1">Computer knowledge</option>
-                        <option value="2">Cooking skills</option>
-                        <option value="3">Clean stuff</option>
+                    <select id="selectSkills" >
+                        <option th:each="competence : ${competenceList}" th:value="${competence}" th:text="#{${competence.getName()}}">Add a skill..</option>
                     </select>
                 </div>
 
                 <div>
                     <label for="selectYears">Years of experience: </label>
-                    <input type="text" name="yearsExp" id="selectYears" placeholder="0" th:field="*{0}">
+                    <input type="text" name="yearsExp" id="selectYears" placeholder="0" th:value="*{Long}">
                 </div>
             </div>
 
@@ -40,12 +36,12 @@
             </div>
 
             Select the time periods that you are available to work:
-            <div class="selectTime">
+            <div class="selectTime" th:field="availabilityForm">
                 <label for="from">From:</label>
-                <input type="date" name="from" id="from">
+                <input type="date" name="from" id="from" th:value="*{availability}">
 
                 <label for="to">to:</label>
-                <input type="date" name="to" id="to">
+                <input type="date" name="to" id="to" th:value="*{Long}">
             </div>
 
             <script>

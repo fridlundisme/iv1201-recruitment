@@ -9,35 +9,54 @@
 
     <h1>Applications</h1>
 
-    Sort by:
-    <div class="custom-select">
-        <select>
-            <option value="0">Do not sort</option>
-            <option value="1">Number of abilities</option>
-            <option value="2">Name</option>
-            <option value="3">Age</option>
-        </select>
-    </div>
+    <form th:action="@{/recruit}" method="post" th:object="${recruitForm}">
+        Sort by:
+        <div class="custom-select">
+            <select>
+                <option value="0">Do not sort</option>
+                <option value="1">Number of abilities</option>
+                <option value="2">Name</option>
+                <option value="3">Age</option>
+            </select>
+        </div>
 
-    <p> </p>
+        <!--Option to the hard coded one above
+        <div class="custom-select">
+            <select id="selectSort" th:field="*{sortChoice}">
+                <option th:each="sort : ${sortList}" th:value="${sort}" th:text="#{${sort.getName()}}">Sort by..</option>
+            </select>
+        </div>-->
 
-    Show only applicants that:
-    <div class="custom-select">
-        <select>
-            <option value="0">Show all</option>
-            <option value="1">available in june</option>
-            <option value="2">has a driver licence</option>
-            <option value="3">can cook</option>
-        </select>
-    </div>
+        Show only applicants that:
+        <div class="custom-select">
+            <select>
+                <option value="0">Show all</option>
+                <option value="1">available in june</option>
+                <option value="2">has a driver licence</option>
+                <option value="3">can cook</option>
+            </select>
+        </div>
 
-    <p> </p>
-    <div>
-        <button>Show result</button>
-    </div>
+        <!--Option to the hard coded one above
+        <div class="custom-select">
+            <select id="selectOnly" th:field="*{onlyChoice}">
+                <option th:each="only : ${onlyList}" th:value="${only}" th:text="#{${only.getName()}}">Show only..</option>
+            </select>
+        </div>-->
 
+        <div>
+            <label for="buttonShowResult">Show result: </label>
+            <button type="button" id="buttonShowResult" onclick="sort()">click here</button>
+        </div>
+    </form>
 
-    <!-- down here will de applications show, placeholder in mean time -->
+    <!-- down here will de applications show, divRecruitList is placeholder in mean time -->
+    <script>
+        function sort() {
+            //function for getting the list of applications sorted and only showing those selected here.
+        }
+    </script>
+
     <div id="divRecruitList">
         <ul>
             <a href="#">Worst Worsington</a></br>

@@ -15,6 +15,8 @@ public class ApplicationController {
    @PostMapping("/apply")
    public String apply(Model model) {
 
+
+
       //userService.save(applicationForm);
 
       //securityService.autoLogin(applicationForm.getUsername(), applicationForm.getPassword());
