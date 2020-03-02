@@ -2,6 +2,7 @@ package iv1201.group1.applications.recruitment.domain;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Objects;
 public class Competence {
    private Integer competenceId;
    private String name;
-   private Collection<CompetenceProfile> competenceProfileList;
+   private List<CompetenceProfile> competenceProfileList;
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "competence_competence_id_seq_generator")
@@ -56,11 +57,11 @@ public class Competence {
    }
 
    @OneToMany(mappedBy = "competence")
-   public Collection<CompetenceProfile> getCompetenceProfileList() {
+   public List<CompetenceProfile> getCompetenceProfileList() {
       return competenceProfileList;
    }
 
-   public void setCompetenceProfileList(Collection<CompetenceProfile> competenceProfilesByCompetenceId) {
+   public void setCompetenceProfileList(List<CompetenceProfile> competenceProfilesByCompetenceId) {
       this.competenceProfileList = competenceProfilesByCompetenceId;
    }
 }

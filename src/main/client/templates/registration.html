@@ -9,7 +9,8 @@
 
     <body>
         <th:block th:replace="layout/partials/navbar.html"></th:block>
-        <div class="register-form">
+
+        <div class="container register-form">
             <form th:action="@{/registration}" method="post" th:object="${registrationForm}">
                 <h2 class="text-center">Register</h2>
                 <div class="form-row">

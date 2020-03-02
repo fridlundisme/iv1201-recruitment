@@ -63,6 +63,7 @@ public class UserServiceImpl implements UserService {
     * @return returns a boolean true if person with given username exists.
     */
    @Override
+   @Transactional
    public boolean userExists(String username) {
       return personJpaRepository.findByUsername(username) != null;
    }

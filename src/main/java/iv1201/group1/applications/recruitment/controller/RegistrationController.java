@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import iv1201.group1.applications.recruitment.domain.Person;
 import iv1201.group1.applications.recruitment.service.SecurityServiceImpl;
 import iv1201.group1.applications.recruitment.service.UserService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * Handles all the registration requests
@@ -49,12 +51,9 @@ public class RegistrationController {
         if (bindingResult.hasErrors())
             return "registration";
 
-        System.out.println(registerPerson.toString());
-
         userService.save(registerPerson);
-
         securityService.autoLogin(registerPerson.getUsername(), registerPerson.getPassword());
 
-        return "index";
+        return "redirect:apply";
     }
 }

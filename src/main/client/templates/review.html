@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head
+    <th:block th:replace="/layout/partials/head.html"></th:block>
+<link rel="stylesheet" type="text/css" href="/css/review.css"/>
+</head>
+<body>
+    <th:block th:replace="/layout/partials/navbar.html"></th:block>
+    
+    <div class="container review-form">
+        <form th:action="@{/review}" method="post" th:object="${applicationDTO}">
+            <h2 class="text-center">Review your application</h2>
+            <label for="Competences">Competences: </label>
+            <div th:each="competenceProfile : ${applicationDTO.getCompetenceProfileList()}" id="Competences">
+                <label for="compName">Competence: </label>
+                <p th:text="${competenceProfile.getCompetence().getName()}" id="compName"></p>
+                <label for="compYear">Years of experience: </label>
+                <p th:text="${competenceProfile.getYearsOfExperience().toString()}" id="compYear"></p>
+            </div>
+            <label for="availability">Availabilities: </label>
+            <div th:each="availabilty : ${applicationDTO.getAvailabilityList()}" id="availability">
+                <label for="availFrom">From: </label>
+                <p th:text="${availabilty.getFromDate().toString()}" id="availFrom"></p>
+                <label for="availTo">to: </label>
+                <p th:text="${availabilty.getToDate().toString()}" id="availTo"></p>
+            </div>
+            <button type="submit" value="Submit"/>Submit</button>
+        </form>
+    </div>
+
+
+    <th:block th:replace="/layout/partials/footer.html"></th:block>
+</body>
+</html>
