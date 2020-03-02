@@ -6,7 +6,8 @@ The easy way to recruit and apply for jobs. This page will show the functions of
 
 When first visiting the site you are requested to login or create a profile to access the site. You cannot access it without an account since it's purpose is to apply for jobs and for that, you need to provide information.
 
-When logged in, you can change and add your skillset, apply for jobs at the company and the recruiters can give the applicant a job based on their skills and experiences.
+When logged in, you can change and add your skillset.
+This will allow the recruiters to give the you (the applicant) a job based on the skills and experiences.
 
 ## Development
 
