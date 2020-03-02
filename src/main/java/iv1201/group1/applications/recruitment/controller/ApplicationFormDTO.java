@@ -6,8 +6,18 @@ import iv1201.group1.applications.recruitment.domain.CompetenceProfile;
 
 import java.util.List;
 
+/**
+ * DTO handling the form for adding availabilities and competences.
+ */
 public class ApplicationFormDTO {
+   /**
+    * List of competence profiles
+    */
    public List<CompetenceProfile> competenceProfileList;
+
+   /**
+    * List of availabilities
+    */
    public List<Availability> availabilityList;
 
    public List<CompetenceProfile> getCompetenceProfileList() {
