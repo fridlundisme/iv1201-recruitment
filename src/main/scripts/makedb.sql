@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS webapplication.role CASCADE;
-DROP TABLE IF EXISTS webapplication.person CASCADE;
-DROP TABLE IF EXISTS webapplication.availability CASCADE;
-DROP TABLE IF EXISTS webapplication.competence CASCADE;
-DROP TABLE IF EXISTS webapplication.competence_profile CASCADE;
+DROP TABLE IF EXISTS role CASCADE;
+DROP TABLE IF EXISTS person CASCADE;
+DROP TABLE IF EXISTS availability CASCADE;
+DROP TABLE IF EXISTS competence CASCADE;
+DROP TABLE IF EXISTS competence_profile CASCADE;
 
 create sequence hibernate_sequence;
 

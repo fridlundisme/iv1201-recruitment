@@ -2,11 +2,16 @@ package iv1201.group1.applications.recruitment.domain;
 
 import javax.persistence.*;
 
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
+
+import iv1201.group1.applications.recruitment.exceptionhandling.validation.ValidEmail;
 
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A object person that is mapped to the table with the same name in the database.
+ */
 @Entity
 @Table(name = "person")
 public class Person {
@@ -18,6 +23,7 @@ public class Person {
    @NotBlank(message="Social security number is required")
    private String ssn;
    @NotBlank(message="Email is required")
+   @ValidEmail
    private String email;
    @NotBlank(message="Password is required")
    private String password;
@@ -99,6 +105,11 @@ public class Person {
       this.username = username;
    }
 
+   /**
+    * A function for comparing this object with a object o.
+    * @param o
+    * @return returns true/false.
+    */
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -113,6 +124,10 @@ public class Person {
               Objects.equals(username, that.username);
    }
 
+   /**
+    * A function for hashing the object.
+    * @return returns the hash of the object.
+    */
    @Override
    public int hashCode() {
       return Objects.hash(personId, name, surname, ssn, email, password, username);
