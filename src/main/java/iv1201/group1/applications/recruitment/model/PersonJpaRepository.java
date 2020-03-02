@@ -5,4 +5,6 @@ import iv1201.group1.applications.recruitment.domain.Person;
 
 public interface PersonJpaRepository extends JpaRepository<Person,Long>{
     Person findByUsername(String username);
+
+	Person findByEmail(String email);
 }

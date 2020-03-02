@@ -12,6 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import iv1201.group1.applications.recruitment.domain.Person;
+import iv1201.group1.applications.recruitment.error.EmailAlreadyExistException;
 import iv1201.group1.applications.recruitment.error.UserAlreadyExistException;
 
 @Controller
@@ -57,6 +58,23 @@ class ResponseExceptionController implements ErrorController{
         return DEFAULT_ERROR_VIEW;
     }
 
+        /**
+     * Handles the EmailAlreadyExistsException
+     * @param ex RuntimeException
+     * @param request Webrequest
+     * @return New ModelAndView with a new registration form that displays the error message
+     */
+    @ExceptionHandler({ EmailAlreadyExistException.class })
+    public ModelAndView handleEmailAlreadyExist(final RuntimeException ex, final WebRequest request) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.addObject("emailExist", "User with this email is already registered");
+        mav.addObject("registrationForm", new Person());
+        mav.setViewName("registration");
+        
+        return mav;
+    }
+
     /**
      * Handles the UserAlreadyExistsException
      * @param ex RuntimeException
@@ -67,7 +85,7 @@ class ResponseExceptionController implements ErrorController{
     public ModelAndView handleUserAlreadyExist(final RuntimeException ex, final WebRequest request) {
         ModelAndView mav = new ModelAndView();
 
-        mav.addObject("userExist", "User already exists");
+        mav.addObject("userExist", "User already exists in database");
         mav.addObject("registrationForm", new Person());
         mav.setViewName("registration");
         
