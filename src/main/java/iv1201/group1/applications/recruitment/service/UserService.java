@@ -12,4 +12,6 @@ public interface UserService {
    Person findByUsername(String username);
 
    boolean userExists(String user);
+
+   boolean emailExists(String email);
 }

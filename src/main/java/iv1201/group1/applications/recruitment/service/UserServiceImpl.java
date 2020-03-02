@@ -1,6 +1,7 @@
 package iv1201.group1.applications.recruitment.service;
 
 import iv1201.group1.applications.recruitment.domain.Person;
+import iv1201.group1.applications.recruitment.error.EmailAlreadyExistException;
 import iv1201.group1.applications.recruitment.error.UserAlreadyExistException;
 import iv1201.group1.applications.recruitment.model.RoleJpaRepository;
 import iv1201.group1.applications.recruitment.model.PersonJpaRepository;
@@ -32,7 +33,9 @@ public class UserServiceImpl implements UserService {
    @Transactional(isolation = Isolation.SERIALIZABLE)
    public void save(Person person) {
       if(userExists(person.getUsername())){
-         throw new UserAlreadyExistException("Username taken " + person.getUsername());
+         throw new UserAlreadyExistException("Username taken: " + person.getUsername());
+      }else if(emailExists(person.getEmail())){
+         throw new EmailAlreadyExistException("Email already registered: " + person.getEmail());
       }
 
       person.setRole(roleJpaRepository.findByName("applicant"));
@@ -40,8 +43,11 @@ public class UserServiceImpl implements UserService {
       personJpaRepository.save(person);
    }
 
+
+
    /**
     * Function for getting object person by searching on a username.
+    * 
     * @param username is the search parameter.
     * @return returns a object person with the given username.
     */
@@ -60,5 +66,10 @@ public class UserServiceImpl implements UserService {
    @Transactional
    public boolean userExists(String username) {
       return personJpaRepository.findByUsername(username) != null;
+   }
+
+   @Override
+   public boolean emailExists(String email) {
+      return personJpaRepository.findByEmail(email) != null;
    }
 }
