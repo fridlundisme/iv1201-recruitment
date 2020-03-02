@@ -23,8 +23,16 @@ class ResponseExceptionController implements ErrorController{
     private static final String ERROR_DEFAULT = "Something went wrong, we are sorry about that. Please try again";
 
 
+    /**
+     * Handles unspecified exceptions thrown by the system.
+     * @param request HTTP request
+     * @param model
+     * @return the default error page
+     * @throws Exception
+     */
     @GetMapping("/" + ERROR_PATH)
-    public String defaultErrorHandler(HttpServletRequest request, Model model) throws Exception {
+    public String defaultErrorHandler(HttpServletRequest request, Model model)
+    {
         String statusCode = extractHttpStatusCode(request);
         switch (statusCode) {
             case "404":
@@ -49,6 +57,12 @@ class ResponseExceptionController implements ErrorController{
         return DEFAULT_ERROR_VIEW;
     }
 
+    /**
+     * Handles the UserAlreadyExistsException
+     * @param ex RuntimeException
+     * @param request Webrequest
+     * @return New ModelAndView with a new registration form that displays the error message
+     */
     @ExceptionHandler({ UserAlreadyExistException.class })
     public ModelAndView handleUserAlreadyExist(final RuntimeException ex, final WebRequest request) {
         ModelAndView mav = new ModelAndView();

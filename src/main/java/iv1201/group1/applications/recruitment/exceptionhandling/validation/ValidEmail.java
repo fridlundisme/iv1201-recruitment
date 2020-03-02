@@ -1,13 +1,19 @@
 package iv1201.group1.applications.recruitment.exceptionhandling.validation;
 
+/**
+ * This validator is copied from Baeldungs tutorial on Spring mvc validation
+ * @see
+ * <a href="www.baeldungs.com">Baeldungs tutorial</a>
+ */
+
 import java.lang.annotation.*;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
- * This validator is copied from Baeldungs tutorial on Spring mvc validation
+ * Creates a new Annotation that exists to control the Email validation
  * @see
- * <a href="www.baeldungs.com">Baeldungs tutorial</a>
+ * EmailValidator
  */
 @Target({ ElementType.TYPE, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
