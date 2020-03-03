@@ -3,7 +3,7 @@
     <ul>
         <!--placeholder for flag-->
         <!--placeholder for logo-->
-        <a th:href="@{/apply}">Apply</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/apply}">Apply</a>
         <!--<a th:href="@{/recruit}">Internal pages</a>-->
         <a sec:authorize="isAnonymous()"  th:href="@{/login}">Login</a>
         <a sec:authorize="isAnonymous()" th:href="@{/registration}">Register</a>
