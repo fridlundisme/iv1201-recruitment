@@ -39,16 +39,6 @@ public class SecurityServiceImpl implements SecurityService {
    }
 
    /**
-    * Function that checks if person is recruiter or applicant.
-    * @return returns true if recruiter or false if applicant.
-    */
-   @Override
-   @Transactional
-   public boolean isRecruit() {
-      return SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("recruit"));
-   }
-
-   /**
     * Function for login, takes login parameters and tries to login.
     * @param username
     * @param password
