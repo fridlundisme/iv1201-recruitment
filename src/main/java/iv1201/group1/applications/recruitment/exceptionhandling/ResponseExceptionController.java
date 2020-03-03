@@ -12,6 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import iv1201.group1.applications.recruitment.domain.Person;
+import iv1201.group1.applications.recruitment.error.EmailAlreadyExistException;
 import iv1201.group1.applications.recruitment.error.UserAlreadyExistException;
 
 @Controller
@@ -23,8 +24,16 @@ class ResponseExceptionController implements ErrorController{
     private static final String ERROR_DEFAULT = "Something went wrong, we are sorry about that. Please try again";
 
 
+    /**
+     * Handles unspecified exceptions thrown by the system.
+     * @param request HTTP request
+     * @param model
+     * @return the default error page
+     * @throws Exception
+     */
     @GetMapping("/" + ERROR_PATH)
-    public String defaultErrorHandler(HttpServletRequest request, Model model) throws Exception {
+    public String defaultErrorHandler(HttpServletRequest request, Model model)
+    {
         String statusCode = extractHttpStatusCode(request);
         switch (statusCode) {
             case "404":
@@ -49,11 +58,34 @@ class ResponseExceptionController implements ErrorController{
         return DEFAULT_ERROR_VIEW;
     }
 
+        /**
+     * Handles the EmailAlreadyExistsException
+     * @param ex RuntimeException
+     * @param request Webrequest
+     * @return New ModelAndView with a new registration form that displays the error message
+     */
+    @ExceptionHandler({ EmailAlreadyExistException.class })
+    public ModelAndView handleEmailAlreadyExist(final RuntimeException ex, final WebRequest request) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.addObject("emailExist", "User with this email is already registered");
+        mav.addObject("registrationForm", new Person());
+        mav.setViewName("registration");
+        
+        return mav;
+    }
+
+    /**
+     * Handles the UserAlreadyExistsException
+     * @param ex RuntimeException
+     * @param request Webrequest
+     * @return New ModelAndView with a new registration form that displays the error message
+     */
     @ExceptionHandler({ UserAlreadyExistException.class })
     public ModelAndView handleUserAlreadyExist(final RuntimeException ex, final WebRequest request) {
         ModelAndView mav = new ModelAndView();
 
-        mav.addObject("userExist", "User already exists");
+        mav.addObject("userExist", "User already exists in database");
         mav.addObject("registrationForm", new Person());
         mav.setViewName("registration");
         

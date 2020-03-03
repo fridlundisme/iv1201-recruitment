@@ -6,8 +6,12 @@ import javax.validation.constraints.NotBlank;
 
 import iv1201.group1.applications.recruitment.exceptionhandling.validation.ValidEmail;
 
+import java.util.List;
 import java.util.Objects;
 
+/**
+ * A object person that is mapped to the table with the same name in the database.
+ */
 @Entity
 @Table(name = "person")
 public class Person {
@@ -26,6 +30,8 @@ public class Person {
    @NotBlank(message="Username is required")
    private String username;
    private Role role;
+   private List<Availability> availabilityList;
+   private List<CompetenceProfile> competenceProfileList;
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_person_id_seq_generator")
@@ -99,6 +105,11 @@ public class Person {
       this.username = username;
    }
 
+   /**
+    * A function for comparing this object with a object o.
+    * @param o
+    * @return returns true/false.
+    */
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -113,6 +124,10 @@ public class Person {
               Objects.equals(username, that.username);
    }
 
+   /**
+    * A function for hashing the object.
+    * @return returns the hash of the object.
+    */
    @Override
    public int hashCode() {
       return Objects.hash(personId, name, surname, ssn, email, password, username);
@@ -126,5 +141,23 @@ public class Person {
 
    public void setRole(Role roleByRoleId) {
       this.role = roleByRoleId;
+   }
+
+   @OneToMany(mappedBy = "person")
+   public List<Availability> getAvailabilityList() {
+      return availabilityList;
+   }
+
+   public void setAvailabilityList(List<Availability> availabilityByPersonId) {
+      this.availabilityList = availabilityByPersonId;
+   }
+
+   @OneToMany(mappedBy = "person")
+   public List<CompetenceProfile> getCompetenceProfileList() {
+      return competenceProfileList;
+   }
+
+   public void setCompetenceProfileList(List<CompetenceProfile> competenceProfileByPersonId) {
+      this.competenceProfileList = competenceProfileByPersonId;
    }
 }

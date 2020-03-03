@@ -1,5 +1,8 @@
 package iv1201.group1.applications.recruitment.error;
 
+/**
+ * User already exists in the database. User cannot be registered with this username
+ */
 public final class UserAlreadyExistException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
