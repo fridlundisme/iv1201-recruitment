@@ -11,18 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class MainController{
-    @Autowired
-    private SecurityService securityService;
-
     
     /**
-     * Catches the "/" and "/index" sites and mapps them.
-     * @param model
+     * Catches the "/" and "/index" sites and maps them.
      * @return The index page
      */
     @GetMapping({"/", "/index"})
-    public String index(Model model){
-        model.addAttribute("isRecruit", securityService.isRecruit());
+    public String index(){
         return "index";
     }
 }

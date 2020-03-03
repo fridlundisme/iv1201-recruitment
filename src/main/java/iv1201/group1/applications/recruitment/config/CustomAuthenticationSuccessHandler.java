@@ -54,7 +54,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
       if (isApplicant) {
          return "index";
       } else if (isRecruit) {
-         return "recruit";
+         return "index";
       } else {
          throw new IllegalStateException();
       }
