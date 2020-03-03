@@ -20,6 +20,7 @@ class ResponseExceptionController implements ErrorController{
     private static final String DEFAULT_ERROR_VIEW = "error";
     private static final String ERROR_PATH = "failure";
     private static final String ERROR_404 = "Page not found";
+    private static final String ERROR_500 = "Internal Server Error";
     private static final String ERROR_DEFAULT = "Something went wrong, we are sorry about that. Please try again";
 
 
@@ -31,6 +32,9 @@ class ResponseExceptionController implements ErrorController{
                 model.addAttribute("errorType",statusCode);
                 model.addAttribute("errorMsg", ERROR_404);
                 break;
+            case "500":
+                model.addAttribute("errorType",statusCode);
+                model.addAttribute("errorMsg", ERROR_500);
             default:
                 model.addAttribute("errorType",statusCode);
                 model.addAttribute("errorMsg", ERROR_DEFAULT);

@@ -3,5 +3,5 @@ install: true
 deploy:
         provider: heroku
         api_key:
-                secure: 1b846d31-64fe-4889-9546-2a4178478f93
+                secure: cf76ebc1-c89c-40d4-9f89-7e818ee08ee4
         app: recruitish
