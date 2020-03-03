@@ -1,7 +1,9 @@
 language: java
 install: true
 deploy:
-        provider: heroku
-        api_key:
-                secure: bae02659-e892-4dc2-8eba-94a106ded14f
-        app: recruitish
+  provider: heroku
+  api_key:
+    secure: NCrvtE0gQkOWoR+E/vChIhhye6MIJp4ecFYEus989+ilGrhz0u0Os9HvBlP/t1rpmDZVjXurOjkR2sXYW5wQt7Grefdt/7Zsa/sYyvQTcAYQBA+YhJ6/iyreLGcw/4zvzMwvZc5hQHmh9gQr26kpxbXemW6h0Kbu3RQIb3TCgZGlkB1CVfjsmJSY5WGCHckT/Og46jUL/VMhnQn+6cgyH6Ve60W4V1ySfFdnGHfW9p7GX0OgcDZIXi6zlLQELwrycztH7saessvBMI5qQ6BzsSkdikgMiUSYVBAFB33FQ68K4aEpGj0AtEJMJSg4wjuq3WKw08G2NCMVXDwqbrFguTGzmNytzd7S9KYroZibmmLD4BUlU+xFpp7uFiq0BvJGYd1vscHBFsr17t/DobA/0I0EZL87jpZUVUYJ5AA0N7wAqjo2+uQlYJrWwDLqXX7WA2gpoCY2i83oMiKJgfUV1XKOyBbsmOQOMuku1TQWI/YmnjBQAzKV/RFNdYZCVn2mxOo4v2RQDrxHk/AP9Uxp96m+7Y2C9qo42XoAUGTMj1MrncmxNbTYbLUiG6MEKBNfCOHi3RQg4js0m//MKoZoUEP8mh5EBMas7oYzt9OidKdSEWn0wAGR2VOt3HOMQy4+Q8kdoZQO+wR354Dcgxm7kb+My0Xwa37NRzwQbFREMYg=
+  app: recruitish
+  on:
+    repo: fridlundisme/iv1201-recruitment
