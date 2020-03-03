@@ -50,8 +50,8 @@ public class SecurityServiceImpl implements SecurityService {
 
    /**
     * Function for login, takes login parameters and tries to login.
-    * @param username login parameter 1.
-    * @param password login parameter 2.
+    * @param username
+    * @param password
     */
    @Override
    @Transactional
