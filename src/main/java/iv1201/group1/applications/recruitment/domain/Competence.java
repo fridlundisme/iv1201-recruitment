@@ -1,15 +1,18 @@
 package iv1201.group1.applications.recruitment.domain;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
+/**
+ * A object competence that is mapped to the table in the database with the same name.
+ */
 @Entity
 @Table(name = "competence")
 public class Competence {
    private Integer competenceId;
    private String name;
-   private Collection<CompetenceProfile> competenceProfileList;
+   private List<CompetenceProfile> competenceProfileList;
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "competence_competence_id_seq_generator")
@@ -33,6 +36,11 @@ public class Competence {
       this.name = name;
    }
 
+   /**
+    * Compares the competence object o with this competence object.
+    * @param o is a competence object.
+    * @return returns a boolean that says if the objects are equal or not.
+    */
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -48,11 +56,11 @@ public class Competence {
    }
 
    @OneToMany(mappedBy = "competence")
-   public Collection<CompetenceProfile> getCompetenceProfileList() {
+   public List<CompetenceProfile> getCompetenceProfileList() {
       return competenceProfileList;
    }
 
-   public void setCompetenceProfileList(Collection<CompetenceProfile> competenceProfilesByCompetenceId) {
+   public void setCompetenceProfileList(List<CompetenceProfile> competenceProfilesByCompetenceId) {
       this.competenceProfileList = competenceProfilesByCompetenceId;
    }
 }

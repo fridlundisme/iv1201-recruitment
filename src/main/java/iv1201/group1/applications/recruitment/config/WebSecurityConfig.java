@@ -21,23 +21,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public UserDetailsService userDetailsService;
 
+    
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    
     @Bean
     public AuthenticationSuccessHandler customAuthenticationSuccessManager() {
         return new CustomAuthenticationSuccessHandler();
     }
 
+    
+    /** 
+     * Configures which pages are accessible to users depending on their level of authorization
+     * @param http {@link HttpSecurity}
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/register", "/registration", "/index", "/css/**").permitAll()
+                    .antMatchers("/registration", "/css/**").permitAll()
                     .antMatchers("/recruit").hasAuthority("recruit")
-                    .antMatchers("/apply").hasAuthority("applicant")
+                    .antMatchers("/apply", "/review").hasAuthority("applicant")
                     .anyRequest().authenticated()
                     .and()
 
@@ -50,11 +58,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll();
     }
 
+    
     @Bean
     public AuthenticationManager customAuthenticationManager() throws Exception {
         return authenticationManager();
     }
 
+    
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());

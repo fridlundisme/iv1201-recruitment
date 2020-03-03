@@ -1,16 +1,19 @@
 package iv1201.group1.applications.recruitment.exceptionhandling.validation;
 
+/**
+ * This validator is copied from Baeldungs tutorial on Spring mvc validation
+ * @see
+ * <a href="www.baeldungs.com">Baeldungs tutorial</a>
+ */
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-
 /**
- * This validator is copied from Baeldungs tutorial on Spring mvc validation
- * @see
- * <a href="www.baeldungs.com">Baeldungs tutorial</a>
+ * Constraints the Email input of registration form so that it needs a specific format to be accepted 
  */
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
     private Pattern pattern;

@@ -3,6 +3,9 @@ package iv1201.group1.applications.recruitment.domain;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * A object competence_profile that is mapped to the table in the database with the same name.
+ */
 @Entity
 @Table(name = "competence_profile")
 public class CompetenceProfile {
@@ -33,6 +36,11 @@ public class CompetenceProfile {
       this.yearsOfExperience = yearsOfExperience;
    }
 
+   /**
+    * Checks if the competence profile object o is the same as this object.
+    * @param o is a competence profile object.
+    * @return returns a boolean true/false.
+    */
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
